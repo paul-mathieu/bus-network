@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
+// ex: line 1 or line 2
+
 public class Bus {
     private ArrayList<String> rawData;
 
@@ -65,7 +67,15 @@ public class Bus {
 
             counterValidity.getAndIncrement();
 
+
         }
+
+//        System.out.println(raw_weekDirection1);
+//        System.out.println(raw_weekDirection2);
+//        System.out.println(raw_saturdayDirection1);
+//        System.out.println(raw_saturdayDirection2);
+
+//        for (String s: raw_weekDirection1) System.out.println(s);
 
         this.lineWeekDirection1 = new Line(raw_weekDirection1);
         this.lineWeekDirection2 = new Line(raw_weekDirection2);
