@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 
+// ex: Campus
+
 public class BusStop {
 
     private String rawDataBusStop;
-    public String name = null;
-    public ArrayList<String> listHourOfPassage;
+    public String name = "";
+    public ArrayList<String> listHourOfPassage = new ArrayList<>();
 
 
     public BusStop(String rawDataBusStop){
@@ -13,20 +15,25 @@ public class BusStop {
     }
 
     public void print(){
-        System.out.println(this.rawDataBusStop);
+        System.out.print("Bus Stop Name: ");
+        System.out.println(this.name);
+        System.out.print("Hour: ");
+        System.out.println(this.listHourOfPassage);
     }
 
     private void convertRawData(){
         String[] rawDataSplit = this.rawDataBusStop.split("\\s");
 
         for (String element : rawDataSplit) {
-            if (this.name == null) {
-                this.name = element;
-            } else {
-                this.listHourOfPassage.add(element);
-            }
+//            System.out.println(element);
+            if (!this.name.equals("")) this.listHourOfPassage.add(element);
+            else if (!element.equals("")) this.name = element;
         }
 
+    }
+
+    public String getName(){
+        return this.name;
     }
 
 }
