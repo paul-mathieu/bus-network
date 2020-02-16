@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+// all buses
+
 public class Sibra {
 
     ArrayList<String> listPathFile = new ArrayList<>();
@@ -19,6 +21,11 @@ public class Sibra {
         this.listPathFile = listPathFile;
     }
 
+    public void print(){
+        for (Bus bus: listBus){
+            bus.print();
+        }
+    }
 
     public void loadData(){
         // initialisation
