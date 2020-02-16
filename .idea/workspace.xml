@@ -14,7 +14,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1XqGE6pYBB3NZ7A2jZ91fWYBGJT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -27,7 +31,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
@@ -70,7 +74,7 @@
       <updated>1581766096947</updated>
       <workItem from="1581766106239" duration="1554000" />
       <workItem from="1581768152200" duration="4826000" />
-      <workItem from="1581788088819" duration="10058000" />
+      <workItem from="1581788088819" duration="12164000" />
     </task>
     <servers />
   </component>
@@ -86,30 +90,30 @@
       <screen x="0" y="0" width="1368" height="912" />
     </state>
     <state x="415" y="204" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1368.912@0.0.1368.912" timestamp="1581768818873" />
-    <state x="465" y="179" key="FileChooserDialogImpl" timestamp="1581767744550">
+    <state x="465" y="179" key="FileChooserDialogImpl" timestamp="1581842347377">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state x="465" y="179" key="FileChooserDialogImpl/0.0.1368.912@0.0.1368.912" timestamp="1581767744550" />
-    <state width="1325" height="150" key="GridCell.Tab.0.bottom" timestamp="1581841201350">
+    <state x="465" y="179" key="FileChooserDialogImpl/0.0.1368.912@0.0.1368.912" timestamp="1581842347377" />
+    <state width="1325" height="150" key="GridCell.Tab.0.bottom" timestamp="1581851927487">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state width="1325" height="150" key="GridCell.Tab.0.bottom/0.0.1368.912@0.0.1368.912" timestamp="1581841201350" />
-    <state width="1325" height="150" key="GridCell.Tab.0.center" timestamp="1581841201350">
+    <state width="1325" height="150" key="GridCell.Tab.0.bottom/0.0.1368.912@0.0.1368.912" timestamp="1581851927487" />
+    <state width="1325" height="150" key="GridCell.Tab.0.center" timestamp="1581851927486">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state width="1325" height="150" key="GridCell.Tab.0.center/0.0.1368.912@0.0.1368.912" timestamp="1581841201350" />
-    <state width="1325" height="150" key="GridCell.Tab.0.left" timestamp="1581841201349">
+    <state width="1325" height="150" key="GridCell.Tab.0.center/0.0.1368.912@0.0.1368.912" timestamp="1581851927486" />
+    <state width="1325" height="150" key="GridCell.Tab.0.left" timestamp="1581851927486">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state width="1325" height="150" key="GridCell.Tab.0.left/0.0.1368.912@0.0.1368.912" timestamp="1581841201349" />
-    <state width="1325" height="150" key="GridCell.Tab.0.right" timestamp="1581841201350">
+    <state width="1325" height="150" key="GridCell.Tab.0.left/0.0.1368.912@0.0.1368.912" timestamp="1581851927486" />
+    <state width="1325" height="150" key="GridCell.Tab.0.right" timestamp="1581851927486">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state width="1325" height="150" key="GridCell.Tab.0.right/0.0.1368.912@0.0.1368.912" timestamp="1581841201350" />
-    <state x="165" y="31" key="SettingsEditor" timestamp="1581767714622">
+    <state width="1325" height="150" key="GridCell.Tab.0.right/0.0.1368.912@0.0.1368.912" timestamp="1581851927486" />
+    <state x="165" y="31" key="SettingsEditor" timestamp="1581842442417">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state x="165" y="31" key="SettingsEditor/0.0.1368.912@0.0.1368.912" timestamp="1581767714622" />
+    <state x="165" y="31" key="SettingsEditor/0.0.1368.912@0.0.1368.912" timestamp="1581842442417" />
     <state x="357" y="281" key="com.intellij.ide.util.TipDialog" timestamp="1581788101520">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
