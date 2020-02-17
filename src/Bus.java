@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 // ex: line 1 or line 2
@@ -6,24 +7,28 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Bus {
     private ArrayList<String> rawData;
 
-    private Line lineWeekDirection1;
-    private Line lineWeekDirection2;
-    private Line lineSaturdayDirection1;
-    private Line lineSaturdayDirection2;
+    public Line lineWeekDirection1;
+    public Line lineWeekDirection2;
+    public Line lineSaturdayDirection1;
+    public Line lineSaturdayDirection2;
 
+    public String name;
 
     // initialisation
     public Bus(String pathFile){
         ReadFile readFile = new ReadFile(pathFile);
         this.rawData = readFile.readRow();
+        this.name = pathFile.substring(pathFile.indexOf("data/") + 5, pathFile.indexOf(".txt"));
     }
+
 
     // print
     public void print(){
-        this.lineWeekDirection1.print();
-        this.lineWeekDirection2.print();
-        this.lineSaturdayDirection1.print();
-        this.lineSaturdayDirection2.print();
+//        this.lineWeekDirection1.print();
+//        this.lineWeekDirection2.print();
+//        this.lineSaturdayDirection1.print();
+//        this.lineSaturdayDirection2.print();
+        System.out.println(this.name);
     }
 
     //extract data from file
@@ -82,6 +87,55 @@ public class Bus {
         this.lineSaturdayDirection1 = new Line(raw_saturdayDirection1);
         this.lineSaturdayDirection2 = new Line(raw_saturdayDirection2);
 
+    }
+
+    public boolean hasBusStop(String nameBusStop) {
+        // variables
+        AtomicBoolean verify = new AtomicBoolean(false);
+        Line[] listLine = {lineWeekDirection1, lineWeekDirection2, lineSaturdayDirection1, lineSaturdayDirection2};
+
+        // for each line possibility
+        for (Line line: listLine){
+
+            // for each name of bus stop
+            for (String name: line.listBusStopName){
+
+                // if same bus stop than request
+                if (nameBusStop.equals(name)) {
+                    verify.set(true);
+                    break;
+                }
+            }
+        }
+
+        return verify.get();
+    }
+
+    public ArrayList<Line> listLineOfTheDay(String typeDay){
+        ArrayList<Line> output_listLineOfTheDay = new ArrayList<>();
+        switch (typeDay) {
+            case "no data available":
+                return output_listLineOfTheDay;
+            case "saturday or summer":
+                output_listLineOfTheDay.add(this.lineSaturdayDirection1);
+                output_listLineOfTheDay.add(this.lineSaturdayDirection2);
+                return output_listLineOfTheDay;
+            case "week":
+                output_listLineOfTheDay.add(this.lineWeekDirection1);
+                output_listLineOfTheDay.add(this.lineWeekDirection2);
+                return output_listLineOfTheDay;
+            default:
+                throw new IllegalStateException("Unexpected value: " + typeDay);
+        }
+    }
+
+    public Line lineInThisDirection(String firstBusStopName, String secondBusStopName, String typeDay){
+        for (Line l: listLineOfTheDay(typeDay)){
+            if (l.isAfter(firstBusStopName, secondBusStopName)){
+                return l;
+            }
+        }
+        return null;
     }
 
 }
