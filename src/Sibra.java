@@ -10,6 +10,12 @@ public class Sibra {
 
     ArrayList<Bus> listBus = new ArrayList<Bus>();
 
+    /*
+    =======================================================================
+     Class initialization
+    =======================================================================
+    */
+
     // by default
     public Sibra(){
         this.listPathFile.add(System.getProperty("user.dir") + "/data/1_Poisy-ParcDesGlaisins.txt");
@@ -21,11 +27,13 @@ public class Sibra {
         this.listPathFile = listPathFile;
     }
 
-    public void print(){
-        for (Bus bus: listBus){
-            bus.print();
-        }
-    }
+
+    /*
+    =======================================================================
+     Load data
+    =======================================================================
+    */
+
 
     public void loadData(){
         // initialisation
@@ -39,14 +47,60 @@ public class Sibra {
 //            bus.print();
         }
 
-
-
     }
 
     public ArrayList<String> listDataToInfo(List<String> listData){
         return null;
     }
 
+
+    /*
+    =======================================================================
+     Use bus methods
+    =======================================================================
+    */
+
+    public void displayBusDepartureAndArrival(String departure, String arrival){
+        System.out.println("Possibility of departure bus line:");
+        for (Bus b: listBusStop(departure)) System.out.println(b.name);
+        System.out.println("Possibility of arrival bus line:");
+        for (Bus b: listBusStop(arrival)) System.out.println(b.name);
+
+    }
+
+
+    // method
+    public ArrayList<Bus> listBusStop(String nameBusStop){
+        ArrayList<Bus> listBusStop = new ArrayList<>();
+        for (Bus b: this.listBus){
+            if (b.hasBusStop(nameBusStop)){
+                listBusStop.add(b);
+                b.print();
+            }
+        }
+
+        return listBusStop;
+    }
+
+
+//    public ArrayList<String> firstHourDepartance(String nameBusStop, String hourDepartance){
+//        ArrayList<String> listHourDepartance = new ArrayList<>();
+//        for (Bus b: this.listBus){
+//            if (b.hasBusStop(nameBusStop)){
+//                listBusStop.add(b);
+//                b.print();
+//            }
+//        }
+//
+//        return listBusStop;
+//    }
+
+
+    /*
+    =======================================================================
+     Print, tests and debug
+    =======================================================================
+    */
     public void test(){
 
         ReadFile data_l1 = new ReadFile(this.listPathFile.get(0));
@@ -55,6 +109,12 @@ public class Sibra {
         ReadFile data_l2 = new ReadFile(this.listPathFile.get(1));
         data_l2.print();
         System.out.println(data_l2.readRow());
+    }
+
+    public void print(){
+        for (Bus bus: listBus){
+            bus.print();
+        }
     }
 
 }
