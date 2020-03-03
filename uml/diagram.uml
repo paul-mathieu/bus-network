@@ -3,19 +3,36 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="0.0" y="222.0">Line</node>
-    <node x="0.0" y="0.0">PublicHoliday</node>
-    <node x="121.0" y="222.0">Bus</node>
-    <node x="0.0" y="74.0">Request</node>
-    <node x="0.0" y="148.0">Sibra</node>
-    <node x="142.0" y="74.0">BusStop</node>
-    <node x="184.0" y="0.0">ReadFile</node>
-    <node x="128.0" y="148.0">Main</node>
+    <node x="0.0" y="301.0">Line</node>
+    <node x="121.0" y="301.0">Bus</node>
+    <node x="0.0" y="153.0">PublicHoliday</node>
+    <node x="111.0" y="0.0">Request</node>
+    <node x="142.0" y="227.0">Sibra</node>
+    <node x="173.0" y="79.0">SimpleRequest</node>
+    <node x="184.0" y="153.0">ReadFile</node>
+    <node x="0.0" y="227.0">BusStop</node>
+    <node x="270.0" y="227.0">Main</node>
+    <node x="0.0" y="79.0">DijkstraRequest</node>
   </nodes>
   <notes />
-  <edges />
-  <settings layout="Hierarchic Group" zoom="1.0" x="105.5" y="212.0" />
-  <SelectedNodes />
+  <edges>
+    <edge source="SimpleRequest" target="Request">
+      <point x="0.0" y="-14.5" />
+      <point x="242.5" y="54.0" />
+      <point x="183.75" y="54.0" />
+      <point x="24.25" y="14.5" />
+    </edge>
+    <edge source="DijkstraRequest" target="Request">
+      <point x="0.0" y="-14.5" />
+      <point x="76.5" y="54.0" />
+      <point x="135.25" y="54.0" />
+      <point x="-24.25" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="489.5" y="283.0" />
+  <SelectedNodes>
+    <node>Line</node>
+  </SelectedNodes>
   <Categories />
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
