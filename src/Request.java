@@ -7,10 +7,12 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class Request {
 
-    private final String day;
-    private final String departure;
-    private final String arrival;
-    private final String hour;
+    protected String day;
+    protected String departure;
+    protected String arrival;
+    protected String hour;
+
+    private final String stringURL;
 
     public String typeDay;
 
@@ -25,6 +27,8 @@ public class Request {
         this.arrival = arrival;
         this.hour = hour;
 
+        this.stringURL = "https://jours-feries-france.antoine-augusti.fr/api/" + this.day.substring(0,4);
+
         initialize();
     }
 
@@ -33,7 +37,7 @@ public class Request {
         this.sibra.loadData();
 
         // list public holiday
-        PublicHoliday publicHoliday = new PublicHoliday("https://jours-feries-france.antoine-augusti.fr/api/2019");
+        PublicHoliday publicHoliday = new PublicHoliday(this.stringURL);
         this.listPublicHoliday = publicHoliday.listPublicHoliday;
 
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
@@ -43,7 +47,7 @@ public class Request {
         setTypeDay();
     }
 
-    private void setTypeDay() throws ParseException {
+    private void setTypeDay() {
         // if sunday or public holiday > no data available ("no data available")
         // if saturday or summer > data saturday ("saturday or summer")
         // else > data week ("week")
