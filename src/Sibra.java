@@ -43,7 +43,6 @@ public class Sibra {
         for (String pathBus: this.listPathFile) {
             Bus bus = new Bus(pathBus);
             listBus.add(bus);
-            bus.extractData();
 //            bus.print();
         }
 
@@ -62,9 +61,14 @@ public class Sibra {
 
     public void displayBusDepartureAndArrival(String departure, String arrival){
         System.out.println("Possibility of departure bus line:");
-        for (Bus b: listBusStop(departure)) System.out.println(b.name);
+        for (Bus b: listBusStop(departure)) {
+            //
+            System.out.println(b.name);
+        }
         System.out.println("Possibility of arrival bus line:");
-        for (Bus b: listBusStop(arrival)) System.out.println(b.name);
+        for (Bus b: listBusStop(arrival)) {
+            System.out.println(b.name);
+        }
 
     }
 
@@ -75,7 +79,7 @@ public class Sibra {
         for (Bus b: this.listBus){
             if (b.hasBusStop(nameBusStop)){
                 listBusStop.add(b);
-                b.print();
+//                b.print();
             }
         }
 
