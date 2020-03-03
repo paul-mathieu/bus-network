@@ -39,4 +39,28 @@ public class Line {
             this.listBusStopName.add(bs.getName());
         }
     }
+
+    // method
+    public int indexBusStopName(String busStopName){
+        // -1 if not in list else index
+        if (!this.listBusStopName.contains(busStopName)) return -1;
+        else return this.listBusStopName.indexOf(busStopName);
+    }
+
+    public boolean isAfter(String firstBusStopName, String secondBusStopName){
+        // true if the second bus stop name is after
+        return indexBusStopName(firstBusStopName) < indexBusStopName(secondBusStopName);
+    }
+
+    public boolean isBefore(String firstBusStopName, String secondBusStopName){
+        // true if the second bus stop name is before
+        return indexBusStopName(firstBusStopName) > indexBusStopName(secondBusStopName);
+    }
+
+    public String getFirstAndLast(){
+        // get first bus stop and last bus stop
+        return this.listBusStopName.get(0) + "_to_" + this.listBusStopName.get(this.listBusStopName.size() - 1);
+    }
+
+
 }
