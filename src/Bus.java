@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -14,31 +16,37 @@ public class Bus {
 
     public String name;
 
-    // initialisation
+    /*
+    =======================================================================
+     Class initialization
+    =======================================================================
+    */
+
     public Bus(String pathFile){
         ReadFile readFile = new ReadFile(pathFile);
         this.rawData = readFile.readRow();
         this.name = pathFile.substring(pathFile.indexOf("data/") + 5, pathFile.indexOf(".txt"));
-    }
-
-
-    // print
-    public void print(){
-//        this.lineWeekDirection1.print();
-//        this.lineWeekDirection2.print();
-//        this.lineSaturdayDirection1.print();
-//        this.lineSaturdayDirection2.print();
-        System.out.println(this.name);
+        setCleanData();
     }
 
     //extract data from file
-    public void extractData() {
+    public void setCleanData() {
 
-        // aller juste apres les deux \n qui se suivent
-        // etape 1 : tant que element de liste non vide, stocker les donnees (semaine_aller)
-        // etape 2 : apres element de liste non vide, tant que element de liste non vide, sotcker les donnees (semaine_retour)
-        // etape 3 : apres deux elements de liste vide, tant que element de liste non vide, sotcker les donnees (samedi_retour)
-        // etape 4 : apres element de liste non vide, tant que element de liste non vide, sotcker les donnees (samedi_retour)
+        /*
+        convert raw data to clean data
+
+        just go after the two \n after each other
+        step 1: as a non-empty list element, store the data (week_stop)
+        step 2: after non-empty list element, as long as non-empty list element, save the data (week_return)
+        step 3: after two empty list elements, as a non-empty list element, sotcker the data (saturday_return)
+        step 4: after non-empty list element, as long as non-empty list element, save the data (Saturday_return)
+
+        aller juste apres les deux \n qui se suivent
+        etape 1 : tant que element de liste non vide, stocker les donnees (semaine_aller)
+        etape 2 : apres element de liste non vide, tant que element de liste non vide, sotcker les donnees (semaine_retour)
+        etape 3 : apres deux elements de liste vide, tant que element de liste non vide, sotcker les donnees (samedi_retour)
+        etape 4 : apres element de liste non vide, tant que element de liste non vide, sotcker les donnees (samedi_retour)
+        */
 
         ArrayList<String> raw_weekDirection1 = new ArrayList<>();
         ArrayList<String> raw_weekDirection2 = new ArrayList<>();
@@ -60,25 +68,18 @@ public class Bus {
 
             if (countEmpty.get() == 1) step.set(1);
             else if (countEmpty.get() == 2) step.set(2);
-            else if (countEmpty.get() == 3) step.set(0);
+            else if (countEmpty.get() == 3) step.set(0); // do nothing
             else if (countEmpty.get() == 4) step.set(3);
             else if (countEmpty.get() == 5) step.set(4);
 
-            // step 1 (countEmpty = 1)
-            if (step.get() == 1 && counterValidity.get() >= 1) raw_weekDirection1.add(row);
-            else if (step.get() == 2 && counterValidity.get() >= 1) raw_weekDirection2.add(row);
-            else if (step.get() == 3 && counterValidity.get() >= 3) raw_saturdayDirection1.add(row);
-            else if (step.get() == 4 && counterValidity.get() >= 1) raw_saturdayDirection2.add(row);
+            if (step.get() == 1 && counterValidity.get() >= 1) raw_weekDirection1.add(row);          // if step 1 (countEmpty = 1)
+            else if (step.get() == 2 && counterValidity.get() >= 1) raw_weekDirection2.add(row);     // if step 3
+            else if (step.get() == 3 && counterValidity.get() >= 3) raw_saturdayDirection1.add(row); // if step 4
+            else if (step.get() == 4 && counterValidity.get() >= 1) raw_saturdayDirection2.add(row); // if step 5
 
             counterValidity.getAndIncrement();
 
-
         }
-
-//        System.out.println(raw_weekDirection1);
-//        System.out.println(raw_weekDirection2);
-//        System.out.println(raw_saturdayDirection1);
-//        System.out.println(raw_saturdayDirection2);
 
 //        for (String s: raw_weekDirection1) System.out.println(s);
 
@@ -88,6 +89,13 @@ public class Bus {
         this.lineSaturdayDirection2 = new Line(raw_saturdayDirection2);
 
     }
+
+
+    /*
+    =======================================================================
+     Methods
+    =======================================================================
+    */
 
     public boolean hasBusStop(String nameBusStop) {
         // variables
@@ -111,7 +119,7 @@ public class Bus {
         return verify.get();
     }
 
-    public ArrayList<Line> listLineOfTheDay(String typeDay){
+    public ArrayList<Line> listLineOfTheDay(@NotNull String typeDay){
         ArrayList<Line> output_listLineOfTheDay = new ArrayList<>();
         switch (typeDay) {
             case "no data available":
@@ -137,5 +145,21 @@ public class Bus {
         }
         return null;
     }
+
+    /*
+    =======================================================================
+     Print, tests and debug
+    =======================================================================
+    */
+
+    // print
+    public void print(){
+//        this.lineWeekDirection1.print();
+//        this.lineWeekDirection2.print();
+//        this.lineSaturdayDirection1.print();
+//        this.lineSaturdayDirection2.print();
+        System.out.println(this.name);
+    }
+
 
 }
