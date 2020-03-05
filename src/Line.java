@@ -62,5 +62,11 @@ public class Line {
         return this.listBusStopName.get(0) + "_to_" + this.listBusStopName.get(this.listBusStopName.size() - 1);
     }
 
+    public void makeAllBusStopToFalse(){
+        for (BusStop bs: this.dataLine){
+            bs.setIsUsed(false);
+        }
+    }
+
 
 }
