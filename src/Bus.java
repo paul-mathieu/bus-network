@@ -14,6 +14,9 @@ public class Bus {
     public Line lineSaturdayDirection1;
     public Line lineSaturdayDirection2;
 
+    private boolean isUsedLineWeek;
+    private boolean isUsedLineSaturday;
+
     public String name;
 
     /*
@@ -81,13 +84,30 @@ public class Bus {
 
         }
 
-//        for (String s: raw_weekDirection1) System.out.println(s);
+        for (String s: raw_weekDirection1) System.out.println(s);
 
         this.lineWeekDirection1 = new Line(raw_weekDirection1);
         this.lineWeekDirection2 = new Line(raw_weekDirection2);
         this.lineSaturdayDirection1 = new Line(raw_saturdayDirection1);
         this.lineSaturdayDirection2 = new Line(raw_saturdayDirection2);
 
+    }
+
+
+
+
+    /*
+    =======================================================================
+     Setters
+    =======================================================================
+    */
+
+    public void setIsUsedLineWeek(boolean b){
+        this.isUsedLineWeek = b;
+    }
+
+    public void setIsUsedLineSaturday(boolean b){
+        this.isUsedLineSaturday = b;
     }
 
 
@@ -144,6 +164,13 @@ public class Bus {
             }
         }
         return null;
+    }
+
+    public  void makeAllLineToFalse(){
+        this.lineWeekDirection1.makeAllBusStopToFalse();
+        this.lineWeekDirection2.makeAllBusStopToFalse();
+        this.lineSaturdayDirection1.makeAllBusStopToFalse();
+        this.lineSaturdayDirection2.makeAllBusStopToFalse();
     }
 
     /*
