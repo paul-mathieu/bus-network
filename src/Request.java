@@ -45,6 +45,7 @@ public class Request {
         this.stringDay = sdf.format(date);
 
         setTypeDay();
+        this.sibra.setUsedBus(this.typeDay);
     }
 
     private void setTypeDay() {
