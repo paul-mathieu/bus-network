@@ -55,6 +55,26 @@ public class Sibra {
 
     /*
     =======================================================================
+     Setters
+    =======================================================================
+    */
+
+    public void setUsedBus(String typeDay){
+        for (Bus b: this.listBus){
+            if (typeDay.equals("saturday or summer")){
+                b.setIsUsedLineWeek(false);
+                b.setIsUsedLineSaturday(true);
+            } else if (typeDay.equals("week")){
+                b.setIsUsedLineWeek(true);
+                b.setIsUsedLineSaturday(false);
+            }
+        }
+    }
+
+
+
+    /*
+    =======================================================================
      Use bus methods
     =======================================================================
     */
@@ -84,6 +104,12 @@ public class Sibra {
         }
 
         return listBusStop;
+    }
+
+    public void makeAllBusUsedToFalse() {
+        for (Bus b : this.listBus) {
+            b.makeAllLineToFalse();
+        }
     }
 
 
