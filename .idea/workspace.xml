@@ -2,20 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9089a50f-7ec8-46fd-a907-177d6452917b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DijkstraRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Graph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Polytech_sem6_PROJ632_reseau_bus.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Polytech_sem6_PROJ632_reseau_bus.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Bus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Bus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/BusStop.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/BusStop.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Line.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Line.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Request.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Sibra.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Sibra.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/SimpleRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/SimpleRequest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Bus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusStop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusStop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DijkstraRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DijkstraRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Graph.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Line.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Request.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Sibra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sibra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SimpleRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SimpleRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uml/diagram.uml" beforeDir="false" afterPath="$PROJECT_DIR$/uml/diagram.uml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,32 +54,17 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Polytech_sem6_PROJ632_reseau_bus" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReadFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ReadFile" />
-      <module name="Polytech_sem6_PROJ632_reseau_bus" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.ReadFile" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.ReadFile" />
       </list>
     </recent_temporary>
   </component>
@@ -102,7 +88,8 @@
       <workItem from="1582894841059" duration="182000" />
       <workItem from="1582903283660" duration="29000" />
       <workItem from="1583057459034" duration="6327000" />
-      <workItem from="1583218941556" duration="7018000" />
+      <workItem from="1583218941556" duration="33351000" />
+      <workItem from="1583397505098" duration="42000" />
     </task>
     <servers />
   </component>
@@ -110,6 +97,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="140" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583324044767">
+      <screen x="0" y="0" width="1368" height="912" />
+    </state>
+    <state x="140" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1368.912@0.0.1368.912" timestamp="1583324044767" />
     <state x="490" y="160" key="#com.intellij.ide.util.MemberChooser" timestamp="1581790583779">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
@@ -118,10 +109,14 @@
       <screen x="0" y="0" width="1368" height="912" />
     </state>
     <state x="474" y="327" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1368.912@0.0.1368.912" timestamp="1582042364280" />
-    <state x="415" y="204" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1581866787757">
+    <state x="415" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583229125279">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state x="415" y="204" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1368.912@0.0.1368.912" timestamp="1581866787757" />
+    <state x="415" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1368.912@0.0.1368.912" timestamp="1583229125279" />
+    <state x="415" y="204" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1583312089285">
+      <screen x="0" y="0" width="1368" height="912" />
+    </state>
+    <state x="415" y="204" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1368.912@0.0.1368.912" timestamp="1583312089285" />
     <state x="93" y="93" width="1181" height="725" key="DiffContextDialog" timestamp="1583058201025">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
@@ -130,22 +125,22 @@
       <screen x="0" y="0" width="1368" height="912" />
     </state>
     <state x="465" y="179" key="FileChooserDialogImpl/0.0.1368.912@0.0.1368.912" timestamp="1581842347377" />
-    <state width="1325" height="150" key="GridCell.Tab.0.bottom" timestamp="1583221098802">
+    <state width="1325" height="150" key="GridCell.Tab.0.bottom" timestamp="1583339739021">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state width="1325" height="150" key="GridCell.Tab.0.bottom/0.0.1368.912@0.0.1368.912" timestamp="1583221098802" />
-    <state width="1325" height="150" key="GridCell.Tab.0.center" timestamp="1583221098802">
+    <state width="1325" height="150" key="GridCell.Tab.0.bottom/0.0.1368.912@0.0.1368.912" timestamp="1583339739021" />
+    <state width="1325" height="150" key="GridCell.Tab.0.center" timestamp="1583339739020">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state width="1325" height="150" key="GridCell.Tab.0.center/0.0.1368.912@0.0.1368.912" timestamp="1583221098802" />
-    <state width="1325" height="150" key="GridCell.Tab.0.left" timestamp="1583221098802">
+    <state width="1325" height="150" key="GridCell.Tab.0.center/0.0.1368.912@0.0.1368.912" timestamp="1583339739020" />
+    <state width="1325" height="150" key="GridCell.Tab.0.left" timestamp="1583339739020">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state width="1325" height="150" key="GridCell.Tab.0.left/0.0.1368.912@0.0.1368.912" timestamp="1583221098802" />
-    <state width="1325" height="150" key="GridCell.Tab.0.right" timestamp="1583221098802">
+    <state width="1325" height="150" key="GridCell.Tab.0.left/0.0.1368.912@0.0.1368.912" timestamp="1583339739020" />
+    <state width="1325" height="150" key="GridCell.Tab.0.right" timestamp="1583339739020">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state width="1325" height="150" key="GridCell.Tab.0.right/0.0.1368.912@0.0.1368.912" timestamp="1583221098802" />
+    <state width="1325" height="150" key="GridCell.Tab.0.right/0.0.1368.912@0.0.1368.912" timestamp="1583339739020" />
     <state width="1325" height="274" key="GridCell.Tab.1.bottom" timestamp="1581933092835">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
@@ -170,10 +165,10 @@
       <screen x="0" y="0" width="1368" height="912" />
     </state>
     <state x="533" y="364" key="VCS.ChangelistChooser/0.0.1368.912@0.0.1368.912" timestamp="1583058163512" />
-    <state x="357" y="281" key="com.intellij.ide.util.TipDialog" timestamp="1583218945333">
+    <state x="357" y="281" key="com.intellij.ide.util.TipDialog" timestamp="1583397531644">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state x="357" y="281" key="com.intellij.ide.util.TipDialog/0.0.1368.912@0.0.1368.912" timestamp="1583218945333" />
+    <state x="357" y="281" key="com.intellij.ide.util.TipDialog/0.0.1368.912@0.0.1368.912" timestamp="1583397531644" />
     <state x="407" y="345" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1583219725046">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
@@ -182,10 +177,10 @@
       <screen x="0" y="0" width="1368" height="912" />
     </state>
     <state x="415" y="212" key="extract.method.dialog/0.0.1368.912@0.0.1368.912" timestamp="1581768726683" />
-    <state x="347" y="194" width="672" height="678" key="search.everywhere.popup" timestamp="1583219590111">
+    <state x="348" y="195" width="672" height="678" key="search.everywhere.popup" timestamp="1583259292602">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state x="347" y="194" width="672" height="678" key="search.everywhere.popup/0.0.1368.912@0.0.1368.912" timestamp="1583219590111" />
+    <state x="348" y="195" width="672" height="678" key="search.everywhere.popup/0.0.1368.912@0.0.1368.912" timestamp="1583259292602" />
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
     <General>
