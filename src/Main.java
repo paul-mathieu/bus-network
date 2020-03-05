@@ -18,7 +18,7 @@ public class Main {
         SimpleRequest simpleRequest = new SimpleRequest(day, departure, arrival, hour);
         simpleRequest.doRequest();
 
-        System.out.println(day.substring(0,4));
+//        System.out.println(day.substring(0,4));
 
         DijkstraRequest dijkstraRequest = new DijkstraRequest(day, departure, arrival, hour);
 
