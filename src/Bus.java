@@ -84,7 +84,7 @@ public class Bus {
 
         }
 
-        for (String s: raw_weekDirection1) System.out.println(s);
+        // for (String s: raw_weekDirection1) System.out.println(s);
 
         this.lineWeekDirection1 = new Line(raw_weekDirection1);
         this.lineWeekDirection2 = new Line(raw_weekDirection2);
@@ -172,6 +172,42 @@ public class Bus {
         this.lineSaturdayDirection1.makeAllBusStopToFalse();
         this.lineSaturdayDirection2.makeAllBusStopToFalse();
     }
+
+    /*
+    =======================================================================
+     Functions for graph
+    =======================================================================
+    */
+
+    public ArrayList<NodeBusStop> getArrayNearestBusStop(String busStopName, String typeDay){
+        ArrayList<NodeBusStop> arrayNearestBusStop = new ArrayList<>();
+        switch (typeDay) {
+            case "no data available":
+                return null;
+            case "saturday or summer":
+                arrayNearestBusStop.add(this.lineSaturdayDirection1.getArrayNearestBusStop(busStopName, this.name, "lineSaturdayDirection1"));
+                arrayNearestBusStop.add(this.lineSaturdayDirection2.getArrayNearestBusStop(busStopName, this.name, "lineSaturdayDirection2"));
+            case "week":
+                arrayNearestBusStop.add(this.lineWeekDirection1.getArrayNearestBusStop(busStopName, this.name, "lineWeekDirection1"));
+                arrayNearestBusStop.add(this.lineWeekDirection2.getArrayNearestBusStop(busStopName, this.name, "lineWeekDirection2"));
+        }
+        return arrayNearestBusStop;
+    }
+
+
+    public void doBusStopUsed (String busStopName, String typeDay){
+        switch (typeDay) {
+            case "saturday or summer":
+                this.lineSaturdayDirection1.doBusStopUsed(busStopName);
+                this.lineSaturdayDirection2.doBusStopUsed(busStopName);
+            case "week":
+                this.lineWeekDirection1.doBusStopUsed(busStopName);
+                this.lineWeekDirection2.doBusStopUsed(busStopName);
+        }
+    }
+
+
+
 
     /*
     =======================================================================
