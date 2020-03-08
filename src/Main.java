@@ -8,7 +8,7 @@ public class Main {
         // init request
         String day = "2020-02-14";
         String departure = "GARE";
-        String arrival = "CAMPUS";
+        String arrival = "POISY_COLLÈGE";
         String hour = "12:00";
 
 //        Request request = new Request(day, departure, arrival, hour);
