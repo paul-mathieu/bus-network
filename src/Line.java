@@ -62,8 +62,8 @@ public class Line {
     public void setIsSeparation(){
         for (BusStop bs: this.dataLine){
             if (bs.isNotAlready){
-                for (BusStop bs_chack: this.dataLine) {
-                    if (bs.isReverse(bs_chack)){
+                for (BusStop bs_check: this.dataLine) {
+                    if (bs.isReverse(bs_check)){
                         bs.isSeparation = true;
                         break;
                     }
@@ -97,27 +97,61 @@ public class Line {
         return indexBusStopName(firstBusStopName) > indexBusStopName(secondBusStopName);
     }
 
-    public BusStop getNextBusStop(BusStop busStop){
-        AtomicReference<BusStop> previousBusStop = null;
+    public ArrayList<BusStop> getNextBusStop(BusStop busStop){
+        ArrayList<BusStop> listBusStop = new ArrayList<>();
+        BusStop previousBusStop = null;
+//        System.out.println(this.listBusStopName);
         for (BusStop bs: this.dataLine) {
-            if (busStop == previousBusStop.get()){
-                return bs;
-            } // prendre en compte les fourchettes
-            previousBusStop.set(bs);
+            if (busStop == previousBusStop){
+                listBusStop.add(bs);
+            }
+            // if two possibilities next
+            if (listBusStop.size() > 0){
+//                System.out.println(listBusStop.get(listBusStop.size() - 1).name + " ~~~~~~ " + bs.name);
+//                System.out.println("SOP: " + listBusStop.get(listBusStop.size() - 1).isReverse(bs));
+                if (listBusStop.get(listBusStop.size() - 1).isReverse(bs)){
+                    System.out.println("test");
+                    listBusStop.add(bs);
+                }
+            }
+            previousBusStop = bs;
         }
-        return null;
+        return listBusStop;
     }
 
-    public BusStop getPreviousBusStop(BusStop busStop){
-        AtomicReference<BusStop> previousBusStop = null;
+    public ArrayList<BusStop> getPreviousBusStop(BusStop busStop){
+        ArrayList<BusStop> listBusStop = new ArrayList<>();
+        BusStop previousBusStop = null;
+//        System.out.println(this.listBusStopName);
         for (BusStop bs: this.dataLine) {
-            if (busStop == previousBusStop.get()){
-                return previousBusStop.get();
-            } // prendre en compte les fourchettes
-            previousBusStop.set(bs);
+            if (busStop == previousBusStop){
+                listBusStop.add(previousBusStop);
+            }
+            // if two possibilities next
+            if (listBusStop.size() > 0){
+//                System.out.println(listBusStop.get(listBusStop.size() - 1).name + " ~~~~~~ " + bs.name);
+//                System.out.println("SOP: " + listBusStop.get(listBusStop.size() - 1).isReverse(bs));
+                if (listBusStop.get(listBusStop.size() - 1).isReverse(bs)){
+                    System.out.println("test");
+                    listBusStop.add(bs);
+                }
+            }
+            previousBusStop = bs;
         }
-        return null;
+        return listBusStop;
     }
+
+
+//    public BusStop getPreviousBusStop(BusStop busStop){
+//        AtomicReference<BusStop> previousBusStop = null;
+//        for (BusStop bs: this.dataLine) {
+//            if (busStop == previousBusStop.get()){
+//                return previousBusStop.get();
+//            } // prendre en compte les fourchettes
+//            previousBusStop.set(bs);
+//        }
+//        return null;
+//    }
 
     public String getFirstAndLast(){
         // get first bus stop and last bus stop
@@ -136,18 +170,22 @@ public class Line {
     =======================================================================
     */
 
-    public NodeBusStop getArrayNearestBusStop(String busStopName, String busName, String lineName){
+    public ArrayList<NodeBusStop> getArrayNearestBusStop(String busStopName, String busName, String lineName){
         // get the next bus stop in the list if exists
-        BusStop nextBusStop;
+        ArrayList<NodeBusStop> listNodeBusStop = new ArrayList<>();
         for (BusStop bs: this.dataLine){
             if (bs.name.equals(busStopName)){
-                nextBusStop = getNextBusStop(bs);
-                if (nextBusStop != null) {
-                    return new NodeBusStop(busName, lineName, nextBusStop);
+                for (BusStop nextBusStop: getNextBusStop(bs)) {
+                    if (nextBusStop != null) {
+                        listNodeBusStop.add(new NodeBusStop(busName, lineName, nextBusStop));
+                    }
                 }
             }
         }
-        return null;
+//        System.out.println("listNodeBusStop");
+//        System.out.println(listNodeBusStop);
+//        System.out.println("listNodeBusStop");
+        return listNodeBusStop;
     }
 
     public void doBusStopUsed(String busStopName){
