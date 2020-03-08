@@ -185,11 +185,11 @@ public class Bus {
             case "no data available":
                 return null;
             case "saturday or summer":
-                arrayNearestBusStop.add(this.lineSaturdayDirection1.getArrayNearestBusStop(busStopName, this.name, "lineSaturdayDirection1"));
-                arrayNearestBusStop.add(this.lineSaturdayDirection2.getArrayNearestBusStop(busStopName, this.name, "lineSaturdayDirection2"));
+                arrayNearestBusStop.addAll(this.lineSaturdayDirection1.getArrayNearestBusStop(busStopName, this.name, "lineSaturdayDirection1"));
+                arrayNearestBusStop.addAll(this.lineSaturdayDirection2.getArrayNearestBusStop(busStopName, this.name, "lineSaturdayDirection2"));
             case "week":
-                arrayNearestBusStop.add(this.lineWeekDirection1.getArrayNearestBusStop(busStopName, this.name, "lineWeekDirection1"));
-                arrayNearestBusStop.add(this.lineWeekDirection2.getArrayNearestBusStop(busStopName, this.name, "lineWeekDirection2"));
+                arrayNearestBusStop.addAll(this.lineWeekDirection1.getArrayNearestBusStop(busStopName, this.name, "lineWeekDirection1"));
+                arrayNearestBusStop.addAll(this.lineWeekDirection2.getArrayNearestBusStop(busStopName, this.name, "lineWeekDirection2"));
         }
         return arrayNearestBusStop;
     }
