@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 // ex: Campus
 
@@ -9,11 +9,11 @@ public class BusStop {
     public String name = "";
     public ArrayList<String> listHourOfPassage = new ArrayList<>();
 
-    public Boolean isSeparation = false;         // TODO if it's one of two possibilities
+    public Boolean isSeparation = false;         // if it's one of two possibilities (after junction separation)
     public Boolean isJunctionSeparation = false; // TODO if there are two possibilities next
     public Boolean isCrossingLines = false;      // TODO if an other bus line stops there
     public Boolean isNotAlready = false;         // if don't already pass
-    public Boolean isTerminus = false;           // TODO if is terminus (even if not already)
+    public Boolean isTerminus = false;           // if is terminus (even if not already)
 
     public boolean isUsed = false;
 
@@ -65,4 +65,24 @@ public class BusStop {
             this.isTerminus = true;
         }
     }
+
+    public boolean isReverse(BusStop busStop){
+        AtomicBoolean check = new AtomicBoolean(true);
+        for (int i =  0 ; i <  this.listHourOfPassage.size() ; i++){
+            // b_temp = "-" and "12:00" || "12:00" and "-"
+            boolean b_temp =
+                    (this.listHourOfPassage.get(i).equals("-") && !busStop.listHourOfPassage.get(i).equals("-")) ||
+                    (busStop.listHourOfPassage.get(i).equals("-") && !this.listHourOfPassage.get(i).equals("-"));
+            if (b_temp) check.set(false);
+        }
+        return check.get();
+    }
+
+    /*
+    ==================================================
+     Functions for graph
+    ==================================================
+     */
+
+
 }
