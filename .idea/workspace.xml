@@ -2,20 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9089a50f-7ec8-46fd-a907-177d6452917b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/NodeBusStop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Bus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Bus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/BusStop.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/BusStop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/DijkstraRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/DijkstraRequest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Line.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Line.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Request.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Sibra.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Sibra.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Bus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BusStop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusStop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DijkstraRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DijkstraRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Graph.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Line.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Request.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Sibra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sibra.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uml/diagram.uml" beforeDir="false" afterPath="$PROJECT_DIR$/uml/diagram.uml" afterDir="false" />
     </list>
@@ -52,7 +50,7 @@
     <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -90,6 +88,12 @@
       <workItem from="1583057459034" duration="6327000" />
       <workItem from="1583218941556" duration="33351000" />
       <workItem from="1583397505098" duration="42000" />
+      <workItem from="1583490738633" duration="13363000" />
+      <workItem from="1583604745067" duration="499000" />
+      <workItem from="1583605270347" duration="19000" />
+      <workItem from="1583605318136" duration="27000" />
+      <workItem from="1583605370148" duration="82000" />
+      <workItem from="1583605478766" duration="6270000" />
     </task>
     <servers />
   </component>
@@ -109,10 +113,10 @@
       <screen x="0" y="0" width="1368" height="912" />
     </state>
     <state x="474" y="327" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1368.912@0.0.1368.912" timestamp="1582042364280" />
-    <state x="415" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583229125279">
+    <state x="415" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583497032076">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state x="415" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1368.912@0.0.1368.912" timestamp="1583229125279" />
+    <state x="415" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1368.912@0.0.1368.912" timestamp="1583497032076" />
     <state x="415" y="204" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1583312089285">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
@@ -125,22 +129,22 @@
       <screen x="0" y="0" width="1368" height="912" />
     </state>
     <state x="465" y="179" key="FileChooserDialogImpl/0.0.1368.912@0.0.1368.912" timestamp="1581842347377" />
-    <state width="1325" height="150" key="GridCell.Tab.0.bottom" timestamp="1583339739021">
+    <state width="1325" height="154" key="GridCell.Tab.0.bottom" timestamp="1583619649667">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state width="1325" height="150" key="GridCell.Tab.0.bottom/0.0.1368.912@0.0.1368.912" timestamp="1583339739021" />
-    <state width="1325" height="150" key="GridCell.Tab.0.center" timestamp="1583339739020">
+    <state width="1325" height="154" key="GridCell.Tab.0.bottom/0.0.1368.912@0.0.1368.912" timestamp="1583619649667" />
+    <state width="1325" height="154" key="GridCell.Tab.0.center" timestamp="1583619649667">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state width="1325" height="150" key="GridCell.Tab.0.center/0.0.1368.912@0.0.1368.912" timestamp="1583339739020" />
-    <state width="1325" height="150" key="GridCell.Tab.0.left" timestamp="1583339739020">
+    <state width="1325" height="154" key="GridCell.Tab.0.center/0.0.1368.912@0.0.1368.912" timestamp="1583619649667" />
+    <state width="1325" height="154" key="GridCell.Tab.0.left" timestamp="1583619649667">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state width="1325" height="150" key="GridCell.Tab.0.left/0.0.1368.912@0.0.1368.912" timestamp="1583339739020" />
-    <state width="1325" height="150" key="GridCell.Tab.0.right" timestamp="1583339739020">
+    <state width="1325" height="154" key="GridCell.Tab.0.left/0.0.1368.912@0.0.1368.912" timestamp="1583619649667" />
+    <state width="1325" height="154" key="GridCell.Tab.0.right" timestamp="1583619649667">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state width="1325" height="150" key="GridCell.Tab.0.right/0.0.1368.912@0.0.1368.912" timestamp="1583339739020" />
+    <state width="1325" height="154" key="GridCell.Tab.0.right/0.0.1368.912@0.0.1368.912" timestamp="1583619649667" />
     <state width="1325" height="274" key="GridCell.Tab.1.bottom" timestamp="1581933092835">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
@@ -157,18 +161,22 @@
       <screen x="0" y="0" width="1368" height="912" />
     </state>
     <state width="1325" height="274" key="GridCell.Tab.1.right/0.0.1368.912@0.0.1368.912" timestamp="1581933092833" />
-    <state x="165" y="31" key="SettingsEditor" timestamp="1583222020001">
+    <state x="265" y="192" key="IDE.errors.dialog" timestamp="1583615958224">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state x="165" y="31" key="SettingsEditor/0.0.1368.912@0.0.1368.912" timestamp="1583222020001" />
+    <state x="265" y="192" key="IDE.errors.dialog/0.0.1368.912@0.0.1368.912" timestamp="1583615958224" />
+    <state x="265" y="113" width="994" height="706" key="SettingsEditor" timestamp="1583618337694">
+      <screen x="0" y="0" width="1368" height="912" />
+    </state>
+    <state x="265" y="113" width="994" height="706" key="SettingsEditor/0.0.1368.912@0.0.1368.912" timestamp="1583618337694" />
     <state x="533" y="364" key="VCS.ChangelistChooser" timestamp="1583058163512">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
     <state x="533" y="364" key="VCS.ChangelistChooser/0.0.1368.912@0.0.1368.912" timestamp="1583058163512" />
-    <state x="357" y="281" key="com.intellij.ide.util.TipDialog" timestamp="1583397531644">
+    <state x="357" y="281" key="com.intellij.ide.util.TipDialog" timestamp="1583605479892">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state x="357" y="281" key="com.intellij.ide.util.TipDialog/0.0.1368.912@0.0.1368.912" timestamp="1583397531644" />
+    <state x="357" y="281" key="com.intellij.ide.util.TipDialog/0.0.1368.912@0.0.1368.912" timestamp="1583605479892" />
     <state x="407" y="345" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1583219725046">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
