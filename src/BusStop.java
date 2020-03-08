@@ -71,10 +71,14 @@ public class BusStop {
         for (int i =  0 ; i <  this.listHourOfPassage.size() ; i++){
             // b_temp = "-" and "12:00" || "12:00" and "-"
             boolean b_temp =
-                    (this.listHourOfPassage.get(i).equals("-") && !busStop.listHourOfPassage.get(i).equals("-")) ||
-                    (busStop.listHourOfPassage.get(i).equals("-") && !this.listHourOfPassage.get(i).equals("-"));
-            if (b_temp) check.set(false);
+                    (this.listHourOfPassage.get(i).contains("-") && !busStop.listHourOfPassage.get(i).contains("-")) ||
+                    (busStop.listHourOfPassage.get(i).contains("-") && !this.listHourOfPassage.get(i).contains("-"));
+            if (!b_temp) {
+                check.set(false);
+                break;
+            }
         }
+//        System.out.println(check.get());
         return check.get();
     }
 
