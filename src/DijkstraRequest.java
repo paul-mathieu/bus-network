@@ -7,6 +7,17 @@ public class DijkstraRequest extends Request {
         super(day, departure, arrival, hour);
     }
 
+    public void doRequest(){
+//        System.out.println(sibra.getNearestBusStop("CAMPUS", this.typeDay));
+        for (NodeBusStop nbs: sibra.getNearestBusStop(this.arrival, this.typeDay)) {
+            System.out.println("=========");
+            System.out.println(nbs.nameBus);
+            System.out.println(nbs.nameLine);
+            nbs.busStop.print();
+        }
+        System.out.println("=========");
+    }
 
+    // fonction de recherche du poids minimal
 
 }
