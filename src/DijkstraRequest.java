@@ -16,6 +16,16 @@ public class DijkstraRequest extends Request {
             nbs.busStop.print();
         }
         System.out.println("=========");
+
+        Line ligne_1 = sibra.listBus.get(0).lineWeekDirection1;
+        ligne_1.dataLine.get(0).print();
+        ligne_1.dataLine.get(1).print();
+//        ligne_1.dataLine.get(2).print();
+//
+        System.out.println(ligne_1.dataLine.get(0).isReverse(ligne_1.dataLine.get(1)));
+        System.out.println(ligne_1.dataLine.get(1).isReverse(ligne_1.dataLine.get(0)));
+        System.out.println(ligne_1.dataLine.get(1).isReverse(ligne_1.dataLine.get(2)));
+
     }
 
     // fonction de recherche du poids minimal
