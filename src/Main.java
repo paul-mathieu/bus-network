@@ -11,16 +11,18 @@ public class Main {
         String arrival = "CAMPUS";
         String hour = "12:00";
 
-        Request request = new Request(day, departure, arrival, hour);
+//        Request request = new Request(day, departure, arrival, hour);
 
-        System.out.println(request.typeDay);
+//        System.out.println(request.typeDay);
 
-        SimpleRequest simpleRequest = new SimpleRequest(day, departure, arrival, hour);
-        simpleRequest.doRequest();
+//        SimpleRequest simpleRequest = new SimpleRequest(day, departure, arrival, hour);
+//        simpleRequest.doRequest();
 
 //        System.out.println(day.substring(0,4));
 
         DijkstraRequest dijkstraRequest = new DijkstraRequest(day, departure, arrival, hour);
+        System.out.println(dijkstraRequest.typeDay);
+        dijkstraRequest.doRequest();
 
     }
 }
