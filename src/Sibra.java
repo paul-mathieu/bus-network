@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 // all buses
 
@@ -92,8 +92,6 @@ public class Sibra {
 
     }
 
-
-    // method
     public ArrayList<Bus> listBusStop(String nameBusStop){
         ArrayList<Bus> listBusStop = new ArrayList<>();
         for (Bus b: this.listBus){
@@ -104,6 +102,10 @@ public class Sibra {
         }
 
         return listBusStop;
+    }
+
+    public ArrayList<Bus> getListBus() {
+        return listBus;
     }
 
     public void makeAllBusUsedToFalse() {
@@ -128,6 +130,29 @@ public class Sibra {
 
     /*
     =======================================================================
+     Functions for graph
+    =======================================================================
+    */
+
+    public ArrayList<NodeBusStop> getNearestBusStop(String nameBusStop, String typeDay){
+        //list of buses only with the lines having the requested stop
+        // (the list contains only the nearest bus stops)
+        ArrayList<NodeBusStop> arrayNearestBusStop = new ArrayList<>();
+        for (Bus b: this.listBus){
+            arrayNearestBusStop.addAll(b.getArrayNearestBusStop(nameBusStop, typeDay));
+        }
+        arrayNearestBusStop.removeIf(Objects::isNull);
+        return arrayNearestBusStop;
+    }
+
+    public void doBusStopUsed(String nameBusStop, String typeDay){
+        for (Bus b: this.listBus){
+            b.doBusStopUsed(nameBusStop, typeDay);
+        }
+    }
+
+    /*
+    =======================================================================
      Print, tests and debug
     =======================================================================
     */
@@ -146,5 +171,6 @@ public class Sibra {
             bus.print();
         }
     }
+
 
 }
