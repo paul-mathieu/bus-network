@@ -206,7 +206,18 @@ public class Bus {
         }
     }
 
-
+    public ArrayList<NodeBusStop> busStopToNodeBusStop(String busStopName, String typeDay) {
+        ArrayList<NodeBusStop> nodeBusStopArrayList = new ArrayList<>();
+        switch (typeDay) {
+            case "saturday or summer":
+                nodeBusStopArrayList.add(this.lineSaturdayDirection1.getNodeBusStop(busStopName, this.name));
+                nodeBusStopArrayList.add(this.lineSaturdayDirection2.getNodeBusStop(busStopName, this.name));
+            case "week":
+                nodeBusStopArrayList.add(this.lineWeekDirection1.getNodeBusStop(busStopName, this.name));
+                nodeBusStopArrayList.add(this.lineWeekDirection2.getNodeBusStop(busStopName, this.name));
+        }
+        return nodeBusStopArrayList;
+    }
 
 
     /*
