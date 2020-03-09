@@ -2,18 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9089a50f-7ec8-46fd-a907-177d6452917b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/NodeBusStop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Bus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Bus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/BusStop.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/BusStop.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/DijkstraRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/DijkstraRequest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Line.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Line.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Sibra.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Polytech_sem6_PROJ632_reseau_bus/Sibra.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Bus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusStop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusStop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DijkstraRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DijkstraRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Line.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NodeBusStop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NodeBusStop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Request.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Sibra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sibra.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uml/diagram.uml" beforeDir="false" afterPath="$PROJECT_DIR$/uml/diagram.uml" afterDir="false" />
     </list>
@@ -50,7 +50,7 @@
     <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -93,12 +93,16 @@
       <workItem from="1583605270347" duration="19000" />
       <workItem from="1583605318136" duration="27000" />
       <workItem from="1583605370148" duration="82000" />
-      <workItem from="1583605478766" duration="6270000" />
+      <workItem from="1583605478766" duration="11083000" />
+      <workItem from="1583689386921" duration="7393000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="WindowStateProjectService">
     <state x="140" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583324044767">
@@ -121,6 +125,10 @@
       <screen x="0" y="0" width="1368" height="912" />
     </state>
     <state x="415" y="204" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1368.912@0.0.1368.912" timestamp="1583312089285" />
+    <state x="202" y="0" key="CommitChangelistDialog2" timestamp="1583665587290">
+      <screen x="0" y="0" width="1368" height="912" />
+    </state>
+    <state x="202" y="0" key="CommitChangelistDialog2/0.0.1368.912@0.0.1368.912" timestamp="1583665587290" />
     <state x="93" y="93" width="1181" height="725" key="DiffContextDialog" timestamp="1583058201025">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
@@ -129,22 +137,22 @@
       <screen x="0" y="0" width="1368" height="912" />
     </state>
     <state x="465" y="179" key="FileChooserDialogImpl/0.0.1368.912@0.0.1368.912" timestamp="1581842347377" />
-    <state width="1325" height="154" key="GridCell.Tab.0.bottom" timestamp="1583619649667">
+    <state width="1325" height="154" key="GridCell.Tab.0.bottom" timestamp="1583738206618">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state width="1325" height="154" key="GridCell.Tab.0.bottom/0.0.1368.912@0.0.1368.912" timestamp="1583619649667" />
-    <state width="1325" height="154" key="GridCell.Tab.0.center" timestamp="1583619649667">
+    <state width="1325" height="154" key="GridCell.Tab.0.bottom/0.0.1368.912@0.0.1368.912" timestamp="1583738206618" />
+    <state width="1325" height="154" key="GridCell.Tab.0.center" timestamp="1583738206618">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state width="1325" height="154" key="GridCell.Tab.0.center/0.0.1368.912@0.0.1368.912" timestamp="1583619649667" />
-    <state width="1325" height="154" key="GridCell.Tab.0.left" timestamp="1583619649667">
+    <state width="1325" height="154" key="GridCell.Tab.0.center/0.0.1368.912@0.0.1368.912" timestamp="1583738206618" />
+    <state width="1325" height="154" key="GridCell.Tab.0.left" timestamp="1583738206618">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state width="1325" height="154" key="GridCell.Tab.0.left/0.0.1368.912@0.0.1368.912" timestamp="1583619649667" />
-    <state width="1325" height="154" key="GridCell.Tab.0.right" timestamp="1583619649667">
+    <state width="1325" height="154" key="GridCell.Tab.0.left/0.0.1368.912@0.0.1368.912" timestamp="1583738206618" />
+    <state width="1325" height="154" key="GridCell.Tab.0.right" timestamp="1583738206618">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state width="1325" height="154" key="GridCell.Tab.0.right/0.0.1368.912@0.0.1368.912" timestamp="1583619649667" />
+    <state width="1325" height="154" key="GridCell.Tab.0.right/0.0.1368.912@0.0.1368.912" timestamp="1583738206618" />
     <state width="1325" height="274" key="GridCell.Tab.1.bottom" timestamp="1581933092835">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
@@ -165,18 +173,18 @@
       <screen x="0" y="0" width="1368" height="912" />
     </state>
     <state x="265" y="192" key="IDE.errors.dialog/0.0.1368.912@0.0.1368.912" timestamp="1583615958224" />
-    <state x="265" y="113" width="994" height="706" key="SettingsEditor" timestamp="1583618337694">
+    <state x="265" y="113" width="994" height="706" key="SettingsEditor" timestamp="1583738807569">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state x="265" y="113" width="994" height="706" key="SettingsEditor/0.0.1368.912@0.0.1368.912" timestamp="1583618337694" />
+    <state x="265" y="113" width="994" height="706" key="SettingsEditor/0.0.1368.912@0.0.1368.912" timestamp="1583738807569" />
     <state x="533" y="364" key="VCS.ChangelistChooser" timestamp="1583058163512">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
     <state x="533" y="364" key="VCS.ChangelistChooser/0.0.1368.912@0.0.1368.912" timestamp="1583058163512" />
-    <state x="357" y="281" key="com.intellij.ide.util.TipDialog" timestamp="1583605479892">
+    <state x="357" y="281" key="com.intellij.ide.util.TipDialog" timestamp="1583689401281">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
-    <state x="357" y="281" key="com.intellij.ide.util.TipDialog/0.0.1368.912@0.0.1368.912" timestamp="1583605479892" />
+    <state x="357" y="281" key="com.intellij.ide.util.TipDialog/0.0.1368.912@0.0.1368.912" timestamp="1583689401281" />
     <state x="407" y="345" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1583219725046">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
@@ -185,6 +193,10 @@
       <screen x="0" y="0" width="1368" height="912" />
     </state>
     <state x="415" y="212" key="extract.method.dialog/0.0.1368.912@0.0.1368.912" timestamp="1581768726683" />
+    <state x="345" y="212" key="run.anything.popup" timestamp="1583697804255">
+      <screen x="0" y="0" width="1368" height="912" />
+    </state>
+    <state x="345" y="212" key="run.anything.popup/0.0.1368.912@0.0.1368.912" timestamp="1583697804255" />
     <state x="348" y="195" width="672" height="678" key="search.everywhere.popup" timestamp="1583259292602">
       <screen x="0" y="0" width="1368" height="912" />
     </state>
