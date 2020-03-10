@@ -1,13 +1,36 @@
+import java.util.ArrayList;
+
 public class NodeBusStop {
 
-    public String nameBus;
-    public String nameLine;
-    public BusStop busStop;
+    private String nameBus;
+    private String nameLine;
+    private BusStop busStop;
 
     public NodeBusStop(String nameBus, String nameLine, BusStop busStop){
         this.nameBus = nameBus;
         this.nameLine = nameLine;
         this.busStop = busStop;
     }
+
+    public String getNameBus(){
+        return this.nameBus;
+    }
+
+    public String getNameLine(){
+        return this.nameLine;
+    }
+
+    public String getNameBusStop(){
+        return this.busStop.name;
+    }
+
+    public ArrayList<String> getListHourOfPassage(){
+        return this.busStop.listHourOfPassage;
+    }
+
+    public BusStop getBusStop(){
+        return this.busStop;
+    }
+
 
 }
