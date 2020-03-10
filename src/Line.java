@@ -210,7 +210,9 @@ public class Line {
 
     public NodeBusStop getNodeBusStop(String busStopName, String busName, String lineName){
         for (BusStop bs: this.dataLine){
-            if (bs.name.equals(busName)) return new NodeBusStop(busName, lineName, bs);
+            if (bs.name.equals(busStopName)) {
+                return new NodeBusStop(busName, lineName, bs);
+            }
         }
         return null;
     }
@@ -220,6 +222,7 @@ public class Line {
         ArrayList<String> arrayBusStop2 = listHourOfPassage(nameBusStop2);
         for (int index = 0; index < arrayBusStop1.size(); index++){
             if (!arrayBusStop1.get(index).contains("-") && !arrayBusStop2.get(index).contains("-")){
+                System.out.println(arrayBusStop2.get(index) + " - " + arrayBusStop1.get(index));
                 return calculateTimeBetweenTwoHours(arrayBusStop2.get(index), arrayBusStop1.get(index));
             }
         }
@@ -227,13 +230,35 @@ public class Line {
     }
 
     private int calculateTimeBetweenTwoHours(String hour_1, String hour_2){
-        if (hour_1.length() != 5 && hour_2.length() != 5) return -1;
 
-        int hour1Value = Integer.parseInt(hour_1.substring(0,2));
-        int minute1Value = Integer.parseInt(hour_1.substring(3,5));
-        int hour2Value = Integer.parseInt(hour_2.substring(0,2));
-        int minute2Value = Integer.parseInt(hour_2.substring(3,5));
+        int hour1Value;
+        int minute1Value;
+        int hour2Value;
+        int minute2Value;
 
+        if (hour_1.length() == 4) {
+            hour1Value = Integer.parseInt(hour_1.substring(0, 1));
+            minute1Value = Integer.parseInt(hour_1.substring(2,4));
+        } else if (hour_1.length() == 5) {
+            hour1Value = Integer.parseInt(hour_1.substring(0, 2));
+            minute1Value = Integer.parseInt(hour_1.substring(3,5));
+        } else {
+            return -1;
+        }
+
+        if (hour_2.length() == 4) {
+            hour2Value = Integer.parseInt(hour_2.substring(0, 1));
+            minute2Value = Integer.parseInt(hour_2.substring(2,4));
+        } else if (hour_2.length() == 5) {
+            hour2Value = Integer.parseInt(hour_2.substring(0, 2));
+            minute2Value = Integer.parseInt(hour_2.substring(3,5));
+        } else {
+            return -1;
+        }
+
+        System.out.println("_________");
+        System.out.println((hour2Value - hour1Value) * 60 + (minute2Value - minute1Value));
+        System.out.println("_________");
         return (hour2Value - hour1Value) * 60 + (minute2Value - minute1Value);
     }
 
