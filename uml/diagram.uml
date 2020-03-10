@@ -3,134 +3,52 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="0.0" y="436.0">Line</node>
-    <node x="202.5" y="869.0">Bus</node>
-    <node x="739.2113782051282" y="1301.0">PublicHoliday</node>
-    <node x="505.7113782051282" y="235.0">NodeBusStop</node>
-    <node x="613.5727564102565" y="1547.0">Request</node>
-    <node x="327.2113782051282" y="1202.0">Sibra</node>
-    <node x="561.2072115384615" y="1793.0">SimpleRequest</node>
-    <node x="554.9644230769231" y="590.0">ReadFile</node>
-    <node x="163.3935897435898" y="0.0">BusStop</node>
-    <node x="891.4477564102565" y="1929.0">Main</node>
-    <node x="814.0780448717949" y="1782.0">DijkstraRequest</node>
+    <node x="238.0" y="227.0">Bus</node>
+    <node x="312.5" y="0.0">Request</node>
+    <node x="152.0" y="79.0">DijkstraRequestShortest</node>
+    <node x="0.0" y="79.0">SimpleRequest</node>
+    <node x="341.0" y="153.0">ReadFile</node>
+    <node x="119.0" y="227.0">Line</node>
+    <node x="369.0" y="79.0">DijkstraRequestForemost</node>
+    <node x="0.0" y="153.0">PublicHoliday</node>
+    <node x="586.0" y="79.0">DijkstraRequestFastest</node>
+    <node x="177.0" y="153.0">NodeBusStop</node>
+    <node x="624.0" y="153.0">Sibra</node>
+    <node x="486.0" y="153.0">BusStop</node>
+    <node x="0.0" y="227.0">Main</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="Request" target="Sibra">
-      <point x="-141.60000000000002" y="-92.5" />
-      <point x="648.9727564102565" y="1527.0" />
-      <point x="425.2113782051282" y="1527.0" />
-      <point x="-98.0" y="147.5" />
-    </edge>
-    <edge source="Sibra" target="ReadFile">
-      <point x="56.0" y="-147.5" />
-      <point x="579.2113782051282" y="1162.0" />
-      <point x="678.0894230769231" y="1162.0" />
-      <point x="24.625" y="37.5" />
-    </edge>
-    <edge source="Main" target="DijkstraRequest">
-      <point x="36.75" y="-26.5" />
-      <point x="1001.6977564102565" y="1904.0" />
-      <point x="1072.0780448717949" y="1904.0" />
-      <point x="86.0" y="48.5" />
-    </edge>
-    <edge source="NodeBusStop" target="BusStop">
-      <point x="-66.75" y="-70.5" />
-      <point x="572.4613782051282" y="215.0" />
-      <point x="299.8935897435898" y="215.0" />
-      <point x="39.0" y="92.5" />
-    </edge>
-    <edge source="Request" target="PublicHoliday">
-      <point x="70.79999999999995" y="-92.5" />
-      <point x="861.3727564102564" y="1517.0" />
-      <point x="933.4613782051282" y="1517.0" />
-      <point x="64.75" y="48.5" />
-    </edge>
-    <edge source="Sibra" target="NodeBusStop">
-      <point x="168.0" y="-147.5" />
-      <point x="691.2113782051282" y="1182.0" />
-      <point x="762.4644230769231" y="1182.0" />
-      <point x="762.4644230769231" y="416.0" />
-      <point x="661.4613782051282" y="416.0" />
-      <point x="22.25" y="70.5" />
-    </edge>
-    <edge source="Bus" target="ReadFile">
-      <point x="163.33333333333326" y="-136.5" />
-      <point x="561.8333333333333" y="849.0" />
-      <point x="628.8394230769231" y="849.0" />
-      <point x="-24.625" y="37.5" />
-    </edge>
-    <edge source="DijkstraRequest" target="Request">
-      <point x="0.0" y="-48.5" />
-      <point x="986.0780448717949" y="1757.0" />
-      <point x="923.3227564102565" y="1757.0" />
-      <point x="132.75" y="92.5" />
-    </edge>
-    <edge source="DijkstraRequest" target="NodeBusStop">
-      <point x="114.66666666666674" y="-48.5" />
-      <point x="1100.7447115384616" y="1757.0" />
-      <point x="1046.0269230769231" y="1757.0" />
-      <point x="1046.0269230769231" y="396.0" />
-      <point x="750.4613782051282" y="396.0" />
-      <point x="111.25" y="70.5" />
-    </edge>
-    <edge source="Line" target="BusStop">
-      <point x="-85.80000000000007" y="-191.5" />
-      <point x="128.69999999999993" y="416.0" />
-      <point x="199.3072115384615" y="416.0" />
-      <point x="199.3072115384615" y="205.0" />
-      <point x="221.8935897435898" y="205.0" />
-      <point x="-39.0" y="92.5" />
-    </edge>
-    <edge source="Request" target="NodeBusStop">
-      <point x="141.60000000000002" y="-92.5" />
-      <point x="932.1727564102565" y="1527.0" />
-      <point x="1008.7113782051282" y="1527.0" />
-      <point x="1008.7113782051282" y="406.0" />
-      <point x="705.9613782051282" y="406.0" />
-      <point x="66.75" y="70.5" />
-    </edge>
-    <edge source="Bus" target="NodeBusStop">
-      <point x="32.66666666666663" y="-136.5" />
-      <point x="431.16666666666663" y="849.0" />
-      <point x="439.5" y="849.0" />
-      <point x="439.5" y="416.0" />
-      <point x="616.9613782051282" y="416.0" />
-      <point x="-22.25" y="70.5" />
+    <edge source="DijkstraRequestFastest" target="Request">
+      <point x="0.0" y="-14.5" />
+      <point x="681.5" y="49.0" />
+      <point x="393.875" y="49.0" />
+      <point x="34.875" y="14.5" />
     </edge>
     <edge source="SimpleRequest" target="Request">
-      <point x="-52.25" y="-37.5" />
-      <point x="613.4572115384615" y="1757.0" />
-      <point x="657.8227564102565" y="1757.0" />
-      <point x="-132.75" y="92.5" />
+      <point x="0.0" y="-14.5" />
+      <point x="66.0" y="49.0" />
+      <point x="324.125" y="49.0" />
+      <point x="-34.875" y="14.5" />
     </edge>
-    <edge source="Bus" target="Line">
-      <point x="-163.33333333333331" y="-136.5" />
-      <point x="235.16666666666669" y="849.0" />
-      <point x="71.5" y="849.0" />
-      <point x="-143.0" y="191.5" />
+    <edge source="DijkstraRequestShortest" target="Request">
+      <point x="0.0" y="-14.5" />
+      <point x="250.5" y="59.0" />
+      <point x="347.375" y="59.0" />
+      <point x="-11.625" y="14.5" />
     </edge>
-    <edge source="Line" target="NodeBusStop">
-      <point x="171.60000000000002" y="-191.5" />
-      <point x="386.1" y="406.0" />
-      <point x="572.4613782051282" y="406.0" />
-      <point x="-66.75" y="70.5" />
-    </edge>
-    <edge source="Sibra" target="Bus">
-      <point x="-168.0" y="-147.5" />
-      <point x="355.2113782051282" y="1182.0" />
-      <point x="251.5" y="1182.0" />
-      <point x="-147.0" y="136.5" />
+    <edge source="DijkstraRequestForemost" target="Request">
+      <point x="0.0" y="-14.5" />
+      <point x="467.5" y="59.0" />
+      <point x="370.625" y="59.0" />
+      <point x="11.625" y="14.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.3637362637362638" x="579.5" y="991.0" />
+  <settings layout="Hierarchic Group" zoom="0.822429906542056" x="159.0" y="311.0" />
   <SelectedNodes>
-    <node>NodeBusStop</node>
+    <node>PublicHoliday</node>
   </SelectedNodes>
-  <Categories>
-    <Category>Methods</Category>
-  </Categories>
+  <Categories />
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
 </Diagram>
