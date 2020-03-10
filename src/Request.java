@@ -3,6 +3,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class Request {
@@ -76,6 +77,77 @@ public class Request {
             }
         }
         return verify.get();
+    }
+
+    public boolean compareTwoHours(String hour_1, String hour_2, String choice){
+        if (!(hour_1.length() == 5) && !(hour_2.length() == 5)) return false;
+
+        int hour1Value = Integer.parseInt(hour_1.substring(0,2));
+        int minute1Value = Integer.parseInt(hour_1.substring(3,5));
+        int hour2Value = Integer.parseInt(hour_2.substring(0,2));
+        int minute2Value = Integer.parseInt(hour_2.substring(3,5));
+
+        switch (choice) {
+            case "after":
+                return hour1Value > hour2Value || (hour1Value == hour2Value && minute1Value > minute2Value);
+            case "before":
+                return hour1Value < hour2Value || (hour1Value == hour2Value && minute1Value < minute2Value);
+            case "equal":
+                return hour1Value == hour2Value && minute1Value == minute2Value;
+            default:
+                return false;
+        }
+    }
+
+    public int getNextBusAtThisHour(NodeBusStop departureBusStopNode, String hour) {
+        // get the next bus at this hour (the number with the list of bus)
+        AtomicInteger busNumber = new AtomicInteger(1);
+        for (String h : departureBusStopNode.getListHourOfPassage()) {
+            // index of the exact time or the nearest hour for the current stop
+            if (!compareTwoHours(hour, h, "before")) {
+                // if after or equal
+                return busNumber.get();
+            }
+            busNumber.getAndIncrement();
+        }
+        return -1;
+    }
+
+    public ArrayList<NodeBusStop> busStopToNodeBusStops(String busStopName){
+        return sibra.busStopToNodeBusStop(busStopName, this.typeDay);
+    }
+
+    public int getTimeBetweenTwoBusStop(String busStop1, String busStop2){
+        // return the time in minute between two buses in the same line
+        ArrayList<NodeBusStop> nodeBusStops1 = busStopToNodeBusStops(busStop1);
+        ArrayList<NodeBusStop> nodeBusStops2 = busStopToNodeBusStops(busStop2);
+
+        ArrayList<String> infoLine = getInfoLine(busStop1, busStop2);
+
+        return sibra.getTimeBetweenTwoBusStop(infoLine, busStop1, busStop2);
+
+    }
+
+    public ArrayList<String> getInfoLine(String busStop1, String busStop2){
+        // return the time in minute between two buses in the same line
+        ArrayList<NodeBusStop> nodeBusStops1 = busStopToNodeBusStops(busStop1);
+        ArrayList<NodeBusStop> nodeBusStops2 = busStopToNodeBusStops(busStop2);
+
+        ArrayList<String> infoLine;
+
+        for (NodeBusStop nbs1: nodeBusStops1){
+            for (NodeBusStop nbs2: nodeBusStops2){
+                boolean check = nbs1.getNameBus().equals(nbs2.getNameBus()) &&
+                        nbs1.getNameLine().equals(nbs2.getNameLine());
+                infoLine = sibra.busAndLineWithThisSuccession(this.typeDay,
+                        nbs1.getNameBusStop(), nbs1.getListHourOfPassage(),
+                        nbs2.getNameBusStop(), nbs2.getListHourOfPassage());
+                if (check && infoLine != null){
+                    return infoLine;
+                }
+            }
+        }
+        return null;
     }
 
 }
