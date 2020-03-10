@@ -235,16 +235,22 @@ public class Bus {
         ArrayList<NodeBusStop> nodeBusStopArrayListClean = new ArrayList<>();
         switch (typeDay) {
             case "saturday or summer":
+                System.out.println("=======");
                 nodeBusStopArrayList.add(this.lineSaturdayDirection1.getNodeBusStop(busStopName, "lineSaturdayDirection1", this.name));
                 nodeBusStopArrayList.add(this.lineSaturdayDirection2.getNodeBusStop(busStopName, "lineSaturdayDirection2", this.name));
             case "week":
+//                System.out.println("+++++++");
+                System.out.println(busStopName);
                 nodeBusStopArrayList.add(this.lineWeekDirection1.getNodeBusStop(busStopName, "lineWeekDirection1",this.name));
                 nodeBusStopArrayList.add(this.lineWeekDirection2.getNodeBusStop(busStopName, "lineWeekDirection2", this.name));
         }
+//        System.out.println(this.name);
         for (NodeBusStop nbs: nodeBusStopArrayList){
-            System.out.println(nbs.getBusStop());
-            if (nbs.getBusStop() != null){
-                nodeBusStopArrayListClean.add(nbs);
+//            System.out.println(nbs);
+            if (nbs != null) {
+                if (nbs.getBusStop() != null) {
+                    nodeBusStopArrayListClean.add(nbs);
+                }
             }
         }
         return nodeBusStopArrayListClean;
