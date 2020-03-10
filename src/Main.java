@@ -12,9 +12,6 @@ public class Main {
         String hour = "12:00";
 
 //        Request request = new Request(day, departure, arrival, hour);
-
-//        System.out.println(request.typeDay);
-
 //        SimpleRequest simpleRequest = new SimpleRequest(day, departure, arrival, hour);
 //        simpleRequest.doRequest();
 
@@ -25,5 +22,6 @@ public class Main {
         dijkstraRequest.doRequest();
 
     }
+
 }
 
