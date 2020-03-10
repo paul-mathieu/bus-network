@@ -127,6 +127,34 @@ public class Sibra {
 //        return listBusStop;
 //    }
 
+//    public boolean isBusStop1
+
+    public ArrayList<String> busAndLineWithThisSuccession(String typeDay,
+                                                          String busStopName1, ArrayList<String> listHourOfPassage1,
+                                                          String busStopName2, ArrayList<String> listHourOfPassage2){
+        ArrayList<String> busAndLine = new ArrayList<>();
+        String nameLineWithBusStops;
+        for (Bus b: this.listBus){
+            nameLineWithBusStops = b.nameLineWithBusStops(busStopName1, listHourOfPassage1, busStopName2, listHourOfPassage2, typeDay);
+            if (nameLineWithBusStops != null) {
+                busAndLine.add(b.name);
+                busAndLine.add(nameLineWithBusStops);
+                break;
+            }
+        }
+        return busAndLine;
+    }
+
+    public int getTimeBetweenTwoBusStop(ArrayList<String> infoLine, String nameBusStop1, String nameBusStop2){
+        for (Bus b: this.listBus){
+            // if same bus
+            if (b.getName().equals(infoLine.get(0))) {
+                return b.getTimeBetweenTwoBusStop(infoLine.get(1), nameBusStop1, nameBusStop2);
+            }
+        }
+        return -1;
+    }
+
 
     /*
     =======================================================================
@@ -149,6 +177,15 @@ public class Sibra {
         for (Bus b: this.listBus){
             b.doBusStopUsed(nameBusStop, typeDay);
         }
+    }
+
+
+    public ArrayList<NodeBusStop> busStopToNodeBusStop(String busStopName, String typeDay){
+        ArrayList<NodeBusStop> nodeBusStopArrayList = new ArrayList<>();
+        for (Bus b: this.listBus){
+            nodeBusStopArrayList.addAll(b.busStopToNodeBusStop(busStopName, typeDay));
+        }
+        return nodeBusStopArrayList;
     }
 
     /*
