@@ -17,9 +17,9 @@ public class Main {
 
 //        System.out.println(day.substring(0,4));
 
-        DijkstraRequest dijkstraRequest = new DijkstraRequest(day, departure, arrival, hour);
-        System.out.println(dijkstraRequest.typeDay);
-        dijkstraRequest.doRequest();
+        DijkstraRequestShortest dijkstraRequestShortest = new DijkstraRequestShortest(day, departure, arrival, hour);
+        System.out.println(dijkstraRequestShortest.typeDay);
+        dijkstraRequestShortest.doRequest();
 
     }
 
