@@ -148,8 +148,11 @@ public class Sibra {
     public int getTimeBetweenTwoBusStop(ArrayList<String> infoLine, String nameBusStop1, String nameBusStop2){
         for (Bus b: this.listBus){
             // if same bus
-            if (b.getName().equals(infoLine.get(0))) {
-                return b.getTimeBetweenTwoBusStop(infoLine.get(1), nameBusStop1, nameBusStop2);
+            if (infoLine != null) {
+                if (b.getName().equals(infoLine.get(0))) {
+//                    System.out.println("=======");
+                    return b.getTimeBetweenTwoBusStop(infoLine.get(1), nameBusStop1, nameBusStop2);
+                }
             }
         }
         return -1;
