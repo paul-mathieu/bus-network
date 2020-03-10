@@ -87,6 +87,15 @@ public class Line {
         else return this.listBusStopName.indexOf(busStopName);
     }
 
+    public ArrayList<String> listHourOfPassage(String busStopName){
+        for (BusStop bs: this.dataLine){
+            if (bs.getName().equals(busStopName)){
+                return bs.listHourOfPassage;
+            }
+        }
+        return null;
+    }
+
     public boolean isAfter(String firstBusStopName, String secondBusStopName){
         // true if the second bus stop name is after
         return indexBusStopName(firstBusStopName) < indexBusStopName(secondBusStopName);
@@ -124,22 +133,14 @@ public class Line {
         BusStop previousBusStop = null;
 //        System.out.println(this.listBusStopName);
         for (BusStop bs: this.dataLine) {
-            if (busStop == previousBusStop){
+            if (busStop == bs){
                 listBusStop.add(previousBusStop);
-            }
-            // if two possibilities next
-            if (listBusStop.size() > 0){
-//                System.out.println(listBusStop.get(listBusStop.size() - 1).name + " ~~~~~~ " + bs.name);
-//                System.out.println("SOP: " + listBusStop.get(listBusStop.size() - 1).isReverse(bs));
-                if (listBusStop.get(listBusStop.size() - 1).isReverse(bs)){
-                    System.out.println("test");
-                    listBusStop.add(bs);
-                }
             }
             previousBusStop = bs;
         }
         return listBusStop;
     }
+
 
 
 //    public BusStop getPreviousBusStop(BusStop busStop){
@@ -163,6 +164,17 @@ public class Line {
             bs.setIsUsed(false);
         }
     }
+
+    public boolean isBusStopHere(String name, ArrayList<String> listHourOfPassage){
+        for (BusStop bs: this.dataLine){
+            if (bs.name == name && bs.listHourOfPassage == listHourOfPassage){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 
     /*
     =======================================================================
@@ -194,6 +206,35 @@ public class Line {
                 bs.setIsUsed(true);
             }
         }
+    }
+
+    public NodeBusStop getNodeBusStop(String busStopName, String busName, String lineName){
+        for (BusStop bs: this.dataLine){
+            if (bs.name.equals(busName)) return new NodeBusStop(busName, lineName, bs);
+        }
+        return null;
+    }
+
+    public int getTimeBetweenTwoBusStop(String nameBusStop1, String nameBusStop2){
+        ArrayList<String> arrayBusStop1 = listHourOfPassage(nameBusStop1);
+        ArrayList<String> arrayBusStop2 = listHourOfPassage(nameBusStop2);
+        for (int index = 0; index < arrayBusStop1.size(); index++){
+            if (!arrayBusStop1.get(index).contains("-") && !arrayBusStop2.get(index).contains("-")){
+                return calculateTimeBetweenTwoHours(arrayBusStop2.get(index), arrayBusStop1.get(index));
+            }
+        }
+        return -1;
+    }
+
+    private int calculateTimeBetweenTwoHours(String hour_1, String hour_2){
+        if (hour_1.length() != 5 && hour_2.length() != 5) return -1;
+
+        int hour1Value = Integer.parseInt(hour_1.substring(0,2));
+        int minute1Value = Integer.parseInt(hour_1.substring(3,5));
+        int hour2Value = Integer.parseInt(hour_2.substring(0,2));
+        int minute2Value = Integer.parseInt(hour_2.substring(3,5));
+
+        return (hour2Value - hour1Value) * 60 + (minute2Value - minute1Value);
     }
 
 
