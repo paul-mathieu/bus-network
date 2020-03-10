@@ -123,6 +123,7 @@ public class Request {
         ArrayList<NodeBusStop> nodeBusStops2 = busStopToNodeBusStops(busStop2);
 
         ArrayList<String> infoLine = getInfoLine(busStop1, busStop2);
+//        System.out.println("infoLine: " + infoLine);
 
         return sibra.getTimeBetweenTwoBusStop(infoLine, busStop1, busStop2);
 
@@ -132,6 +133,7 @@ public class Request {
         // return the time in minute between two buses in the same line
         ArrayList<NodeBusStop> nodeBusStops1 = busStopToNodeBusStops(busStop1);
         ArrayList<NodeBusStop> nodeBusStops2 = busStopToNodeBusStops(busStop2);
+//        System.out.println("nodeBusStops1: " + nodeBusStops1);
 
         ArrayList<String> infoLine;
 
@@ -142,6 +144,9 @@ public class Request {
                 infoLine = sibra.busAndLineWithThisSuccession(this.typeDay,
                         nbs1.getNameBusStop(), nbs1.getListHourOfPassage(),
                         nbs2.getNameBusStop(), nbs2.getListHourOfPassage());
+//                System.out.println("infoLine: " + infoLine);
+//                System.out.println("check: " + check);
+
                 if (check && infoLine != null){
                     return infoLine;
                 }
