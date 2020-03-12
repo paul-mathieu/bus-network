@@ -8,14 +8,14 @@ public class DijkstraRequestShortest extends Request {
     }
 
     public void doRequest() {
-//        System.out.println(sibra.getNearestBusStop("CAMPUS", this.typeDay));
-//        for (NodeBusStop nbs : sibra.getNearestBusStop(this.arrival, this.typeDay)) {
-//            System.out.println("=========");
-//            System.out.println(nbs.getNameBus());
-//            System.out.println(nbs.getNameLine());
-//            nbs.getBusStop().print();
-//        }
-//        System.out.println("=========");
+        System.out.println(sibra.getNearestBusStop("CAMPUS", this.typeDay));
+        for (NodeBusStop nbs : sibra.getNearestBusStop(this.arrival, this.typeDay)) {
+            System.out.println("=========");
+            System.out.println(nbs.getNameBus());
+            System.out.println(nbs.getNameLine());
+            nbs.getBusStop().print();
+        }
+        System.out.println("=========");
 
         System.out.println(getTimeBetweenTwoBusStop("Mandallaz", "Chorus"));
 
