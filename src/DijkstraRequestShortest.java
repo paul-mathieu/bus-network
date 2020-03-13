@@ -3,9 +3,16 @@ import java.text.ParseException;
 
 public class DijkstraRequestShortest extends Request {
 
+    /*
+    =======================================================================
+     Initialisation
+    =======================================================================
+    */
+
     public DijkstraRequestShortest(String day, String departure, String arrival, String hour) throws IOException, ParseException {
         super(day, departure, arrival, hour);
     }
+
 
     public void doRequest() {
         System.out.println(sibra.getNearestBusStop("CAMPUS", this.typeDay));
@@ -23,6 +30,17 @@ public class DijkstraRequestShortest extends Request {
 
     public void initialise(){
 
+    }
+
+
+    /*
+    =======================================================================
+     Methods
+    =======================================================================
+    */
+
+    private NodeBusStopGraph doDijkstraGraph(){
+        return null;
     }
 
     public NodeBusStop getNearestBusStop(NodeBusStop departureBusStopNode, String hour){
@@ -47,4 +65,12 @@ public class DijkstraRequestShortest extends Request {
 
         return null;
     }
+
+
+    /*
+    =======================================================================
+     Print and debugs
+    =======================================================================
+    */
+
 }
