@@ -11,15 +11,9 @@ public class Main {
         String arrival = "POISY_COLLÈGE";
         String hour = "12:00";
 
-//        Request request = new Request(day, departure, arrival, hour);
-//        SimpleRequest simpleRequest = new SimpleRequest(day, departure, arrival, hour);
-//        simpleRequest.doRequest();
-
-//        System.out.println(day.substring(0,4));
-
         DijkstraRequestShortest dijkstraRequestShortest = new DijkstraRequestShortest(day, departure, arrival, hour);
-        System.out.println(dijkstraRequestShortest.typeDay);
         dijkstraRequestShortest.doRequest();
+//        System.out.println(dijkstraRequestShortest.typeDay);
 
     }
 
