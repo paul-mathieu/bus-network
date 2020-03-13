@@ -36,5 +36,4 @@ public class NodeBusStop {
         return this.getBusStop() != null && this.getNameLine() != null && this.getNameBus() != null;
     }
 
-
 }
