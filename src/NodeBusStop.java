@@ -6,6 +6,8 @@ public class NodeBusStop {
     private String nameLine;
     private BusStop busStop;
 
+    private ArrayList<NodeBusStop> nextNodeBusStops = new ArrayList<>();
+
     public NodeBusStop(String nameBus, String nameLine, BusStop busStop){
         this.nameBus = nameBus;
         this.nameLine = nameLine;
@@ -34,6 +36,10 @@ public class NodeBusStop {
 
     public boolean isComplete(){
         return this.getBusStop() != null && this.getNameLine() != null && this.getNameBus() != null;
+    }
+
+    public void addNextNodeBusStops(NodeBusStop nodeBusStop){
+        this.nextNodeBusStops.add(nodeBusStop);
     }
 
 }
