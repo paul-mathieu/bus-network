@@ -119,6 +119,24 @@ public class Bus {
         return this.name;
     }
 
+    public ArrayList<NodeBusStop> getAllNodeBusStops(String typeDay, String busName){
+        ArrayList<NodeBusStop> allNodeBusStops = new ArrayList<>();
+        switch (typeDay) {
+            case "no data available":
+                return allNodeBusStops;
+            case "saturday or summer":
+                allNodeBusStops.addAll(this.lineSaturdayDirection1.getAllNodeBusStops(busName, "lineSaturdayDirection1"));
+                allNodeBusStops.addAll(this.lineSaturdayDirection2.getAllNodeBusStops(busName, "lineSaturdayDirection2"));
+                return allNodeBusStops;
+            case "week":
+                allNodeBusStops.addAll(this.lineWeekDirection1.getAllNodeBusStops(busName, "lineWeekDirection1"));
+                allNodeBusStops.addAll(this.lineWeekDirection2.getAllNodeBusStops(busName, "lineWeekDirection1"));
+                return allNodeBusStops;
+            default:
+                throw new IllegalStateException("Unexpected value: " + typeDay);
+        }
+    }
+
 
     /*
     =======================================================================
