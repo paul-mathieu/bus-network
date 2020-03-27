@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.atomic.AtomicInteger;
 
 // ex: each senses
 
@@ -217,13 +217,23 @@ public class Line {
         return null;
     }
 
+    public ArrayList<NodeBusStop> getAllNodeBusStops(String busName, String lineName) {
+        ArrayList<NodeBusStop> allNodeBusStops = new ArrayList<>();
+        for (BusStop bs: this.dataLine){
+            allNodeBusStops.add(new NodeBusStop(busName, lineName, bs));
+        }
+        return allNodeBusStops;
+
+    }
+
+
     public int getTimeBetweenTwoBusStop(String nameBusStop1, String nameBusStop2){
         ArrayList<String> arrayBusStop1 = listHourOfPassage(nameBusStop1);
         ArrayList<String> arrayBusStop2 = listHourOfPassage(nameBusStop2);
-        for (int index = 0; index < arrayBusStop1.size(); index++){
-            if (!arrayBusStop1.get(index).contains("-") && !arrayBusStop2.get(index).contains("-")){
-                System.out.println(arrayBusStop2.get(index) + " - " + arrayBusStop1.get(index));
-                return calculateTimeBetweenTwoHours(arrayBusStop2.get(index), arrayBusStop1.get(index));
+        for (AtomicInteger index = new AtomicInteger(); index.get() < arrayBusStop1.size(); index.getAndIncrement()){
+            if (!arrayBusStop1.get(index.get()).contains("-") && !arrayBusStop2.get(index.get()).contains("-")){
+                System.out.println(arrayBusStop2.get(index.get()) + " - " + arrayBusStop1.get(index.get()));
+                return calculateTimeBetweenTwoHours(arrayBusStop2.get(index.get()), arrayBusStop1.get(index.get()));
             }
         }
         return -1;
@@ -256,9 +266,9 @@ public class Line {
             return -1;
         }
 
-        System.out.println("_________");
-        System.out.println((hour2Value - hour1Value) * 60 + (minute2Value - minute1Value));
-        System.out.println("_________");
+//        System.out.println("_________");
+//        System.out.println((hour2Value - hour1Value) * 60 + (minute2Value - minute1Value));
+//        System.out.println("_________");
         return (hour2Value - hour1Value) * 60 + (minute2Value - minute1Value);
     }
 
