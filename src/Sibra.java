@@ -191,6 +191,15 @@ public class Sibra {
         return nodeBusStopArrayList;
     }
 
+    public ArrayList<NodeBusStop> getAllNodeBusStops(String typeDay){
+        ArrayList<NodeBusStop> allNodeBusStops = new ArrayList<>();
+        for (Bus b: this.listBus){
+            allNodeBusStops.addAll(b.getAllNodeBusStops(typeDay, b.name));
+        }
+        return allNodeBusStops;
+    }
+
+
     /*
     =======================================================================
      Print, tests and debug
