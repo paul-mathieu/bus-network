@@ -155,4 +155,8 @@ public class Request {
         return null;
     }
 
+    public ArrayList<NodeBusStop> getAllNodeBusStops(String typeDay) {
+        return this.sibra.getAllNodeBusStops(this.typeDay);
+    }
+
 }
