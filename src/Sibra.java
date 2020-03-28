@@ -173,14 +173,14 @@ public class Sibra {
         //list of buses only with the lines having the requested stop
         // (the list contains only the nearest bus stops)
         ArrayList<NodeBusStop> arrayNearestBusStop = new ArrayList<>();
-        NodeBusStop sameNodeBusStopOtherLine;
+        ArrayList<NodeBusStop> sameNodeBusStopOtherLine;
         for (Bus b: this.listBus){
             arrayNearestBusStop.addAll(b.getArrayNearestBusStop(nameBusStop, typeDay));
-            // si c'est un autre bus
+            // si c'est un autre bus, ajout du même arret si existe
             if (b.getName() != nameBus){
-                sameNodeBusStopOtherLine = b.getNodeBusStop(nameBusStop);
+                sameNodeBusStopOtherLine = b.getNodeBusStop(nameBusStop, typeDay);
                 if (sameNodeBusStopOtherLine != null){
-                    arrayNearestBusStop.add(sameNodeBusStopOtherLine);
+                    arrayNearestBusStop.addAll(sameNodeBusStopOtherLine);
                 }
             }
         }
