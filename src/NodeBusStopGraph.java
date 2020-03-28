@@ -8,7 +8,7 @@ public class NodeBusStopGraph extends NodeBusStop {
     =======================================================================
     */
 
-    private int timeToNextStep = -1;
+    private int timeFromDeparture = -1;
     private ArrayList<NodeBusStopGraph> nodeBusStopChildren = new ArrayList<>();
 
     public NodeBusStopGraph(String nameBus, String nameLine, BusStop busStop) {
@@ -22,8 +22,8 @@ public class NodeBusStopGraph extends NodeBusStop {
     =======================================================================
     */
 
-    public void setTimeToNextStep(int timeToNextStep) {
-        this.timeToNextStep = timeToNextStep;
+    public void setTimeFromDeparture(int timeFromDeparture) {
+        this.timeFromDeparture = timeFromDeparture;
     }
 
 
@@ -33,14 +33,35 @@ public class NodeBusStopGraph extends NodeBusStop {
     =======================================================================
     */
 
-    public int getTimeToNextStep() {
-        return this.timeToNextStep;
+    public int getTimeFromDeparture() {
+        return this.timeFromDeparture;
     }
 
     public ArrayList<NodeBusStopGraph> getNodeBusStopChildren() {
         return nodeBusStopChildren;
     }
 
+    public ArrayList<NodeBusStopGraph> getLeaves(){
+        ArrayList<NodeBusStopGraph> leaves = new ArrayList<>();
+        for (NodeBusStopGraph child: this.nodeBusStopChildren){
+            if (child.nodeBusStopChildren.size() == 0){
+                leaves.add(child);
+            } else {
+                leaves.addAll(child.getLeaves());
+            }
+        }
+        return leaves;
+    }
+
+    public int getShortestTime(){
+        int shortestTime = -1;
+        for (NodeBusStopGraph leaf: getLeaves()){
+            if (shortestTime > leaf.getTimeFromDeparture()){
+                shortestTime = leaf.getTimeFromDeparture();
+            }
+        }
+        return shortestTime;
+    }
 
     /*
     =======================================================================
