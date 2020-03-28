@@ -119,7 +119,7 @@ public class Bus {
         return this.name;
     }
 
-    public ArrayList<NodeBusStop> getAllNodeBusStops(String typeDay, String busName){
+    public ArrayList<NodeBusStop> getAllNodeBusStops(@NotNull String typeDay, String busName){
         ArrayList<NodeBusStop> allNodeBusStops = new ArrayList<>();
         switch (typeDay) {
             case "no data available":
@@ -325,7 +325,17 @@ public class Bus {
 
     }
 
-    public NodeBusStop getNodeBusStop(String nameBusStop){
+    public ArrayList<NodeBusStop> getNodeBusStop(String nameBusStop, String typeDay){
+        ArrayList<NodeBusStop> outputList = new ArrayList<>();
+        switch (typeDay) {
+            case "saturday or summer":
+                outputList.add(this.lineSaturdayDirection1.getNodeBusStop(nameBusStop, this.name, "lineSaturdayDirection1"));
+                outputList.add(this.lineSaturdayDirection1.getNodeBusStop(nameBusStop, this.name, "lineSaturdayDirection2"));
+            case "week":
+                outputList.add(this.lineWeekDirection1.getNodeBusStop(nameBusStop, this.name, "lineWeekDirection1"));
+                outputList.add(this.lineWeekDirection2.getNodeBusStop(nameBusStop, this.name, "lineWeekDirection2"));
+        }
+        return outputList;
 
     }
 
