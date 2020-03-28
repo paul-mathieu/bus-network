@@ -3,6 +3,7 @@ import org.w3c.dom.Node;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class DijkstraRequestShortest extends Request {
 
@@ -28,7 +29,7 @@ public class DijkstraRequestShortest extends Request {
 //        System.out.println("=========");
 //
 //        System.out.println(getTimeBetweenTwoBusStop("Mandallaz", "Chorus"));
-        printDjikPath();
+        printDjikstraPath();
 
 
     }
@@ -108,8 +109,9 @@ public class DijkstraRequestShortest extends Request {
             // ********************
             // update de la liste de la liste des noeuds
             // ********************
+            if (actualNode == null){break;}
             listOfRemainingBusStops = removeNodeBusStopFromList(listOfRemainingBusStops, actualNode);
-            System.out.println(listOfRemainingBusStops.size());
+//            System.out.println(listOfRemainingBusStops.size());
 
         }
 
@@ -126,6 +128,7 @@ public class DijkstraRequestShortest extends Request {
         boolean isSameBus;
         boolean isSameLine;
         boolean isSameBusStop;
+//        System.out.println(nodeBusStop);
         String nodeBusStopNameBus = nodeBusStop.getNameBus();
         String nodeBusStopNameLine = nodeBusStop.getNameLine();
         String nodeBusStopName = nodeBusStop.getNameBusStop();
@@ -149,7 +152,7 @@ public class DijkstraRequestShortest extends Request {
             if (!isSameBus || !isSameLine || !isSameBusStop) {
                 outputNodeBusStops.add(nbs);
             } else {
-                System.out.println(nbs.getNameBusStop());
+//                System.out.println(nbs.getNameBusStop());
             }
         }
         return outputNodeBusStops;
@@ -176,7 +179,7 @@ public class DijkstraRequestShortest extends Request {
         }
 
         // else for another bus
-        for (NodeBusStop nbs: this.sibra.getNearestBusStop(departureBusStopNode.getNameBusStop(),this.typeDay)){
+        for (NodeBusStop nbs: this.sibra.getNearestBusStop(departureBusStopNode.getNameBusStop(), null,this.typeDay)){
             // prendre en compte le temps pour aller à l'arrêt pour pouvoir ensuite savoir à partir de quand attendre un autre bus
             //    -> fonction dans Sibra pour savoir le temps entre deux arrêts (rajouter une minute de marge apres)
             //    -> continuer sette boucle for en regardant l procain bus qui passe
@@ -194,13 +197,69 @@ public class DijkstraRequestShortest extends Request {
 
     public void printDjikPath(){
         System.out.println("begin dijkstra path: ");
-        for (Path p: doDijkstra()){
+        for (Path p: doDijkstra()) {
             System.out.println("==========");
-            System.out.println("actual bus stop: " + p.actualBusStop);
-            System.out.println("previous bus stop: " + p.previousBusStop);
-            System.out.println("time since departure: " + p.timeSinceDeparture);
+            if (p.actualBusStop != null) {
+                System.out.println("actual bus stop: " + p.actualBusStop.getNameBusStop());
+                if (p.previousBusStop != null) {
+                    System.out.println("previous bus stop: " + p.previousBusStop.getNameBusStop());
+                }
+                System.out.println("time since departure: " + p.timeSinceDeparture);
+            }
         }
         System.out.println("==========");
+    }
+
+    public void printDjikstraPath() {
+        ArrayList<Path> djikstraPath = doDijkstra();
+        ArrayList<Path> upsideDownPath = new ArrayList<>();
+        ArrayList<Path> paths = new ArrayList<>();
+
+        Path previousPath;
+        boolean isSameBusStop;
+        boolean isBefore;
+        int counter = 0;
+
+        Path path = new Path(null, null, 1000);
+        // first path
+        for (Path p: djikstraPath){
+            isSameBusStop = path.timeSinceDeparture > p.timeSinceDeparture;
+            if (p.actualBusStop != null) {
+                isBefore = p.actualBusStop.getNameBusStop().equals(this.arrival);
+            } else {
+                isBefore = false;
+            }
+            if (isBefore && isSameBusStop){
+                path = p;
+            }
+        }
+        upsideDownPath.add(path);
+
+        while (!path.actualBusStop.getNameBusStop().equals(this.departure) && counter > 1000){
+            previousPath = path;
+            for (Path p: djikstraPath){
+                if (p.actualBusStop != null && previousPath.actualBusStop != null) {
+                    isSameBusStop = p.actualBusStop.getNameBusStop().equals(previousPath.previousBusStop.getNameBusStop());
+                } else {
+                    isSameBusStop = false;
+                }
+                isBefore = p.timeSinceDeparture < previousPath.timeSinceDeparture;
+                if (isSameBusStop && isBefore){
+                    path = p;
+                }
+            }
+            upsideDownPath.add(path);
+            counter ++;
+        }
+
+        Collections.reverse(upsideDownPath);
+
+        for (Path p: upsideDownPath){
+            System.out.println("______________");
+            System.out.println("bus stop: " + p.actualBusStop.getNameBusStop());
+            System.out.println("time: " + p.timeSinceDeparture);
+        }
+
     }
 
 }
