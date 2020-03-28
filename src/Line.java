@@ -223,7 +223,6 @@ public class Line {
             allNodeBusStops.add(new NodeBusStop(busName, lineName, bs));
         }
         return allNodeBusStops;
-
     }
 
 
@@ -232,7 +231,7 @@ public class Line {
         ArrayList<String> arrayBusStop2 = listHourOfPassage(nameBusStop2);
         for (AtomicInteger index = new AtomicInteger(); index.get() < arrayBusStop1.size(); index.getAndIncrement()){
             if (!arrayBusStop1.get(index.get()).contains("-") && !arrayBusStop2.get(index.get()).contains("-")){
-                System.out.println(arrayBusStop2.get(index.get()) + " - " + arrayBusStop1.get(index.get()));
+//                System.out.println(arrayBusStop2.get(index.get()) + " - " + arrayBusStop1.get(index.get()));
                 return calculateTimeBetweenTwoHours(arrayBusStop2.get(index.get()), arrayBusStop1.get(index.get()));
             }
         }
