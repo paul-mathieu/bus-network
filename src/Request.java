@@ -124,7 +124,10 @@ public class Request {
 
         ArrayList<String> infoLine = getInfoLine(busStop1, busStop2);
 //        System.out.println("infoLine: " + infoLine);
-
+        if (busStop1.equals(busStop2)){
+            System.out.println("same");
+            return 0;
+        }
         return sibra.getTimeBetweenTwoBusStop(infoLine, busStop1, busStop2);
 
     }
@@ -134,12 +137,15 @@ public class Request {
         ArrayList<NodeBusStop> nodeBusStops1 = busStopToNodeBusStops(busStop1);
         ArrayList<NodeBusStop> nodeBusStops2 = busStopToNodeBusStops(busStop2);
 //        System.out.println("nodeBusStops1: " + nodeBusStops1);
+//        System.out.println("nodeBusStops2: " + nodeBusStops2);
 
         ArrayList<String> infoLine;
+        boolean check;
+        boolean isAfter;
 
         for (NodeBusStop nbs1: nodeBusStops1){
             for (NodeBusStop nbs2: nodeBusStops2){
-                boolean check = nbs1.getNameBus().equals(nbs2.getNameBus()) &&
+                check = nbs1.getNameBus().equals(nbs2.getNameBus()) &&
                         nbs1.getNameLine().equals(nbs2.getNameLine());
                 infoLine = sibra.busAndLineWithThisSuccession(this.typeDay,
                         nbs1.getNameBusStop(), nbs1.getListHourOfPassage(),
@@ -148,7 +154,17 @@ public class Request {
 //                System.out.println("check: " + check);
 
                 if (check && infoLine != null){
-                    return infoLine;
+//                    System.out.println("bus nbs1: " + nbs1.getNameBus());
+//                    System.out.println("bus nbs2: " + nbs2.getNameBus());
+//                    System.out.println("line nbs1: " + nbs1.getNameLine());
+//                    System.out.println("line nbs2: " + nbs2.getNameLine());
+                    infoLine = new ArrayList<>();
+                    infoLine.add(nbs1.getNameBus());
+                    infoLine.add(nbs1.getNameLine());
+                    // il faudrait que les info line soient possible
+                    if (isAfterWithInfo(nbs1.getNameBusStop(), nbs2.getNameBusStop(), nbs1.getNameBus(), nbs1.getNameLine())){
+                        return infoLine;
+                    }
                 }
             }
         }
@@ -157,6 +173,28 @@ public class Request {
 
     public ArrayList<NodeBusStop> getAllNodeBusStops(String typeDay) {
         return this.sibra.getAllNodeBusStops(this.typeDay);
+    }
+
+    public boolean isBusStopInList(String busStopName, ArrayList<NodeBusStop> nodeBusStops){
+        for (NodeBusStop nbs: nodeBusStops){
+            if (nbs.getBusStop().getName().equals(busStopName)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isBusStopInPathList(String busStopName, ArrayList<Path> nodeBusStops){
+        for (Path p: nodeBusStops){
+            if (p.actualBusStop.getBusStop().getName().equals(busStopName)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isAfterWithInfo(String nameBusStop1, String nameBusStop2, String busName, String lineName){
+        return this.sibra.isAfterWithInfo(nameBusStop1, nameBusStop2, busName, lineName);
     }
 
 }
