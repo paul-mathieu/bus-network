@@ -200,7 +200,7 @@ public class Bus {
         this.lineSaturdayDirection2.makeAllBusStopToFalse();
     }
 
-    public int getTimeBetweenTwoBusStop(String nameLine, String nameBusStop1, String nameBusStop2){
+    public int getTimeBetweenTwoBusStop(@NotNull String nameLine, String nameBusStop1, String nameBusStop2){
         switch (nameLine) {
             case "lineSaturdayDirection1":
                 return lineSaturdayDirection1.getTimeBetweenTwoBusStop(nameBusStop1, nameBusStop2);
@@ -221,7 +221,7 @@ public class Bus {
     =======================================================================
     */
 
-    public ArrayList<NodeBusStop> getArrayNearestBusStop(String busStopName, String typeDay){
+    public ArrayList<NodeBusStop> getArrayNearestBusStop(String busStopName, @NotNull String typeDay){
         ArrayList<NodeBusStop> arrayNearestBusStop = new ArrayList<>();
         switch (typeDay) {
             case "no data available":
@@ -237,7 +237,7 @@ public class Bus {
     }
 
 
-    public void doBusStopUsed (String busStopName, String typeDay){
+    public void doBusStopUsed (String busStopName, @NotNull String typeDay){
         switch (typeDay) {
             case "saturday or summer":
                 this.lineSaturdayDirection1.doBusStopUsed(busStopName);
@@ -248,19 +248,19 @@ public class Bus {
         }
     }
 
-    public ArrayList<NodeBusStop> busStopToNodeBusStop(String busStopName, String typeDay) {
+    public ArrayList<NodeBusStop> busStopToNodeBusStop(String busStopName, @NotNull String typeDay) {
         ArrayList<NodeBusStop> nodeBusStopArrayList = new ArrayList<>();
         ArrayList<NodeBusStop> nodeBusStopArrayListClean = new ArrayList<>();
         switch (typeDay) {
             case "saturday or summer":
-                System.out.println("=======");
-                nodeBusStopArrayList.add(this.lineSaturdayDirection1.getNodeBusStop(busStopName, "lineSaturdayDirection1", this.name));
-                nodeBusStopArrayList.add(this.lineSaturdayDirection2.getNodeBusStop(busStopName, "lineSaturdayDirection2", this.name));
+//                System.out.println("=======");
+                nodeBusStopArrayList.add(this.lineSaturdayDirection1.getNodeBusStop(busStopName, this.name, "lineSaturdayDirection1"));
+                nodeBusStopArrayList.add(this.lineSaturdayDirection2.getNodeBusStop(busStopName, this.name, "lineSaturdayDirection2"));
             case "week":
 //                System.out.println("+++++++");
-                System.out.println(busStopName);
-                nodeBusStopArrayList.add(this.lineWeekDirection1.getNodeBusStop(busStopName, "lineWeekDirection1",this.name));
-                nodeBusStopArrayList.add(this.lineWeekDirection2.getNodeBusStop(busStopName, "lineWeekDirection2", this.name));
+//                System.out.println(busStopName);
+                nodeBusStopArrayList.add(this.lineWeekDirection1.getNodeBusStop(busStopName, this.name, "lineWeekDirection1"));
+                nodeBusStopArrayList.add(this.lineWeekDirection2.getNodeBusStop(busStopName, this.name, "lineWeekDirection2"));
         }
 //        System.out.println(this.name);
         for (NodeBusStop nbs: nodeBusStopArrayList){
@@ -277,30 +277,56 @@ public class Bus {
 
     public String nameLineWithBusStops(String busStopName1, ArrayList<String> listHourOfPassage1,
                                        String busStopName2, ArrayList<String> listHourOfPassage2,
-                                       String typeDay) {
+                                       @NotNull String typeDay) {
         switch (typeDay) {
             case "saturday or summer":
                 if (isAfter(this.lineSaturdayDirection1, busStopName1, listHourOfPassage1, busStopName2, listHourOfPassage2)) {
                     return "lineSaturdayDirection1";
                 } else if (isAfter(this.lineSaturdayDirection2, busStopName1, listHourOfPassage1, busStopName2, listHourOfPassage2)) {
+//                } else {
                     return "lineSaturdayDirection2";
                 }
             case "week":
                 if (isAfter(this.lineWeekDirection1, busStopName1, listHourOfPassage1, busStopName2, listHourOfPassage2)) {
                     return "lineWeekDirection1";
                 } else if (isAfter(this.lineWeekDirection2, busStopName1, listHourOfPassage1, busStopName2, listHourOfPassage2)) {
+//                } else {
                     return "lineWeekDirection2";
                 }
         }
+//        System.out.println(this.getName());
         return null;
     }
 
-    public boolean isAfter(Line line,
+    public boolean isAfter(@NotNull Line line,
                            String busStopName1, ArrayList<String> listHourOfPassage1,
                            String busStopName2, ArrayList<String> listHourOfPassage2){
         return line.isBusStopHere(busStopName1, listHourOfPassage1) &&
                 line.isBusStopHere(busStopName2, listHourOfPassage2) &&
                 line.isAfter(busStopName2, busStopName1);
+//        return line.isBusStopHere(busStopName1, listHourOfPassage1) &&
+//                line.isBusStopHere(busStopName2, listHourOfPassage2) &&
+//                line.isAfter(busStopName2, busStopName1);
+    }
+
+    public boolean isAfterWithInfo(String nameBusStop1, String nameBusStop2, String lineName){
+
+        switch (lineName){
+            case("lineSaturdayDirection1"):
+                return this.lineSaturdayDirection1.isAfter(nameBusStop2, nameBusStop1);
+            case("lineSaturdayDirection2"):
+                return this.lineSaturdayDirection2.isAfter(nameBusStop2, nameBusStop1);
+            case("lineWeekDirection1"):
+                return this.lineWeekDirection1.isAfter(nameBusStop2, nameBusStop1);
+            case("lineWeekDirection2"):
+                return this.lineWeekDirection2.isAfter(nameBusStop2, nameBusStop1);
+        }
+        return false;
+
+    }
+
+    public NodeBusStop getNodeBusStop(String nameBusStop){
+
     }
 
 
