@@ -136,9 +136,13 @@ public class Sibra {
         String nameLineWithBusStops;
         for (Bus b: this.listBus){
             nameLineWithBusStops = b.nameLineWithBusStops(busStopName1, listHourOfPassage1, busStopName2, listHourOfPassage2, typeDay);
+//            System.out.println("(" + busStopName1 + " - " + b.name + ") listHourOfPassage1: " + listHourOfPassage1);
+//            System.out.println("(" + busStopName2 + " - " + b.name + ") listHourOfPassage2: " + listHourOfPassage2);
+//            System.out.println("nameLineWithBusStops: " + nameLineWithBusStops);
             if (nameLineWithBusStops != null) {
                 busAndLine.add(b.name);
                 busAndLine.add(nameLineWithBusStops);
+//                System.out.println("#");
                 break;
             }
         }
@@ -165,12 +169,20 @@ public class Sibra {
     =======================================================================
     */
 
-    public ArrayList<NodeBusStop> getNearestBusStop(String nameBusStop, String typeDay){
+    public ArrayList<NodeBusStop> getNearestBusStop(String nameBusStop, String nameBus, String typeDay){
         //list of buses only with the lines having the requested stop
         // (the list contains only the nearest bus stops)
         ArrayList<NodeBusStop> arrayNearestBusStop = new ArrayList<>();
+        NodeBusStop sameNodeBusStopOtherLine;
         for (Bus b: this.listBus){
             arrayNearestBusStop.addAll(b.getArrayNearestBusStop(nameBusStop, typeDay));
+            // si c'est un autre bus
+            if (b.getName() != nameBus){
+                sameNodeBusStopOtherLine = b.getNodeBusStop(nameBusStop);
+                if (sameNodeBusStopOtherLine != null){
+                    arrayNearestBusStop.add(sameNodeBusStopOtherLine);
+                }
+            }
         }
         arrayNearestBusStop.removeIf(Objects::isNull);
         return arrayNearestBusStop;
@@ -181,7 +193,6 @@ public class Sibra {
             b.doBusStopUsed(nameBusStop, typeDay);
         }
     }
-
 
     public ArrayList<NodeBusStop> busStopToNodeBusStop(String busStopName, String typeDay){
         ArrayList<NodeBusStop> nodeBusStopArrayList = new ArrayList<>();
@@ -197,6 +208,15 @@ public class Sibra {
             allNodeBusStops.addAll(b.getAllNodeBusStops(typeDay, b.name));
         }
         return allNodeBusStops;
+    }
+
+    public boolean isAfterWithInfo(String nameBusStop1, String nameBusStop2, String busName, String lineName){
+        for (Bus b: this.listBus){
+            if (b.getName() == busName){
+                return b.isAfterWithInfo(nameBusStop1, nameBusStop2, lineName);
+            }
+        }
+        return false;
     }
 
 
