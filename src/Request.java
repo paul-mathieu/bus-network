@@ -99,6 +99,18 @@ public class Request {
         }
     }
 
+    public String intMinutesToHour(int intMinutes){
+        int hours = intMinutes / 60;
+        int minutes = intMinutes % 60;
+        String sHours = hours + "";
+        String sMinutes = minutes + "";
+        if (sHours.length() == 1) {sHours = "0" + sHours;}
+        if (sMinutes.length() == 1) {sMinutes = "0" + sMinutes;}
+//        System.out.println("hours: " + sHours);
+//        System.out.println("minutes: " + sMinutes);
+        return sHours + ":" + sMinutes;
+    }
+
     public int getNextBusAtThisHour(NodeBusStop departureBusStopNode, String hour) {
         // get the next bus at this hour (the number with the list of bus)
         AtomicInteger busNumber = new AtomicInteger(1);
@@ -125,8 +137,8 @@ public class Request {
         ArrayList<String> infoLine = getInfoLine(busStop1, busStop2);
 //        System.out.println("infoLine: " + infoLine);
         if (busStop1.equals(busStop2)){
-            System.out.println("same");
-            return 0;
+//            System.out.println("same");
+            return 1;
         }
         return sibra.getTimeBetweenTwoBusStop(infoLine, busStop1, busStop2);
 
