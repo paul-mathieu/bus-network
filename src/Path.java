@@ -10,4 +10,12 @@ public class Path {
         this.timeSinceDeparture = timeSinceDeparture;
     }
 
+    public String getNameLine(){
+        return this.actualBusStop.getNameLine();
+    }
+
+    public String getNameBus(){
+        return this.actualBusStop.getNameBus();
+    }
+
 }
