@@ -130,7 +130,7 @@ public class Bus {
                 return allNodeBusStops;
             case "week":
                 allNodeBusStops.addAll(this.lineWeekDirection1.getAllNodeBusStops(busName, "lineWeekDirection1"));
-                allNodeBusStops.addAll(this.lineWeekDirection2.getAllNodeBusStops(busName, "lineWeekDirection1"));
+                allNodeBusStops.addAll(this.lineWeekDirection2.getAllNodeBusStops(busName, "lineWeekDirection2"));
                 return allNodeBusStops;
             default:
                 throw new IllegalStateException("Unexpected value: " + typeDay);
@@ -215,29 +215,52 @@ public class Bus {
         }
     }
 
+    public String getDirection(String nameLine){
+        switch (nameLine) {
+            case "lineSaturdayDirection1":
+                return lineSaturdayDirection1.getLast();
+            case "lineSaturdayDirection2":
+                return lineSaturdayDirection2.getLast();
+            case "lineWeekDirection1":
+                return lineWeekDirection1.getLast();
+            case "lineWeekDirection2":
+                return lineWeekDirection2.getLast();
+            default:
+                return null;
+        }
+    }
+
+
+
     /*
     =======================================================================
      Functions for graph
     =======================================================================
     */
 
-    public ArrayList<NodeBusStop> getArrayNearestBusStop(String busStopName, @NotNull String typeDay){
+    public ArrayList<NodeBusStop> getArrayNearestBusStop(String busStopName, String nameLine, @NotNull String typeDay){
         ArrayList<NodeBusStop> arrayNearestBusStop = new ArrayList<>();
         switch (typeDay) {
             case "no data available":
                 return null;
             case "saturday or summer":
-                arrayNearestBusStop.addAll(this.lineSaturdayDirection1.getArrayNearestBusStop(busStopName, this.name, "lineSaturdayDirection1"));
-                arrayNearestBusStop.addAll(this.lineSaturdayDirection2.getArrayNearestBusStop(busStopName, this.name, "lineSaturdayDirection2"));
+//                if (nameLine.equals("lineSaturdayDirection1")) {
+                    arrayNearestBusStop.addAll(this.lineSaturdayDirection1.getArrayNearestBusStop(busStopName, this.name, "lineSaturdayDirection1"));
+//                } else {
+                    arrayNearestBusStop.addAll(this.lineSaturdayDirection2.getArrayNearestBusStop(busStopName, this.name, "lineSaturdayDirection2"));
+//                }
             case "week":
-                arrayNearestBusStop.addAll(this.lineWeekDirection1.getArrayNearestBusStop(busStopName, this.name, "lineWeekDirection1"));
-                arrayNearestBusStop.addAll(this.lineWeekDirection2.getArrayNearestBusStop(busStopName, this.name, "lineWeekDirection2"));
+                if (nameLine.equals("lineWeekDirection1")) {
+                    arrayNearestBusStop.addAll(this.lineWeekDirection1.getArrayNearestBusStop(busStopName, this.name, "lineWeekDirection1"));
+                } else {
+                    arrayNearestBusStop.addAll(this.lineWeekDirection2.getArrayNearestBusStop(busStopName, this.name, "lineWeekDirection2"));
+                }
         }
         return arrayNearestBusStop;
     }
 
 
-    public void doBusStopUsed (String busStopName, @NotNull String typeDay){
+        public void doBusStopUsed (String busStopName, @NotNull String typeDay){
         switch (typeDay) {
             case "saturday or summer":
                 this.lineSaturdayDirection1.doBusStopUsed(busStopName);
