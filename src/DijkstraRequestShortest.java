@@ -46,6 +46,11 @@ public class DijkstraRequestShortest extends Request {
         // liste des chemins
         ArrayList<Path> listOfPaths = new ArrayList<>();
         ArrayList<Path> newListOfPaths = new ArrayList<>();
+        ArrayList<Path> lastListOfPaths = new ArrayList<>();
+        ArrayList<Path> newNewListOfPaths = new ArrayList<>();
+        ArrayList<NodeBusStop> nearestBusStops;
+        int appearsCounter;
+        boolean isAlready;
         // liste des chemins choisis
         ArrayList<Path> listOfSelectedPaths = new ArrayList<>();
 
@@ -69,22 +74,57 @@ public class DijkstraRequestShortest extends Request {
             // update de la liste des chemins -> on ajoute tous les chemins possibles
             // ********************
             // pour toutes les destinations possibles depuis le chemin actuel
-            for (NodeBusStop nbs: sibra.getNearestBusStop(actualNode.getNameBusStop(), actualNode.getNameBus(), this.typeDay)){
+            nearestBusStops = sibra.getNearestBusStop(actualNode.getNameBusStop(), actualNode.getNameLine(), actualNode.getNameBus(), this.typeDay);
+//            System.out.println("++++" + nearestBusStops.size() + "++++");
+            for (NodeBusStop nbs: nearestBusStops){
                 // si l'arret n'a pas encore été emprunté -> si il est encore dans la liste des destinations possibles
-                if (isBusStopInList(nbs.getNameBusStop(), listOfRemainingBusStops)){
-//                    System.out.println("_______");
-//                    System.out.println("actual: " + actualNode.getNameBusStop());
-//                    System.out.println("before: " + nbs.getNameBusStop());
-//                    System.out.println(getTimeBetweenTwoBusStop(actualNode.getNameBusStop(), nbs.getNameBusStop()));
+                if (isBusStopInList(nbs.getNameBusStop(), nbs.getNameLine(), nbs.getNameBus(), listOfRemainingBusStops)){
+//                    System.out.println(nbs.getNameBusStop() + " - " + nbs.getNameBus() + " - " + nbs.getNameLine());
                     t = getTimeBetweenTwoBusStop(actualNode.getNameBusStop(), nbs.getNameBusStop()) + actualPath.timeSinceDeparture;
-//                    System.out.println("t: " + t);
-//                    System.out.println("_______");
                     newPath = new Path(nbs, actualNode, t);
                     newListOfPaths.add(newPath);
                 }
             }
-            listOfPaths = newListOfPaths;
+            // si deux arrest sont identiques, on garde le plus court
+            for (Path p1: newListOfPaths){
+                appearsCounter = 0;
+                for (Path p2: newListOfPaths){
+                    if (p1.actualBusStop == p2.actualBusStop){
+                        appearsCounter ++;
+                    }
+                }
+                if (appearsCounter == 1){
+                    // si une fois, on le garde
+                    newNewListOfPaths.add(p1);
+                } else {
+                    // sinon on garde le plus court
+                    newPath = p1;
+                    for (Path p2: newListOfPaths){
+                        if (p1.actualBusStop == p2.actualBusStop && p2.timeSinceDeparture < newPath.timeSinceDeparture){
+                            newPath = p2;
+                        }
+                    }
+                    // ajout que si il n'y st pas deja
+                    isAlready = false;
+                    for (Path p: newNewListOfPaths){
+                        if (p == newPath){
+                            isAlready = true;
+                        }
+                    }
+                    if (!isAlready) newNewListOfPaths.add(newPath);
+                }
+            }
+
+            lastListOfPaths = listOfPaths;
+            listOfPaths = new ArrayList<>();
+            listOfPaths.addAll(lastListOfPaths);
+            listOfPaths.addAll(newListOfPaths);
+
+//            listOfPaths = newNewListOfPaths;
+
+//            listOfPaths = newListOfPaths;
             newListOfPaths = new ArrayList<>();
+//            newNewListOfPaths = new ArrayList<>();
 
             // ********************
             // update de la liste des chemins les plus courts
@@ -101,16 +141,19 @@ public class DijkstraRequestShortest extends Request {
             actualNode = shortestPath.actualBusStop;
             actualPath = shortestPath;
             listOfSelectedPaths.add(actualPath);
-//            System.out.println("*********");
-//            System.out.println(actualNode.getNameBus());
-//            System.out.println(actualNode.getNameLine());
-//            System.out.println(actualNode.getNameBusStop());
+//            for (Path p: listOfSelectedPaths) System.out.println(p.actualBusStop.getNameBusStop());
+//            System.out.println("++++" + actualNode.getNameBusStop() + " - " + actualNode.getNameBus() + " - " + actualNode.getNameLine());
 
             // ********************
             // update de la liste de la liste des noeuds
             // ********************
             if (actualNode == null){break;}
+//            for (NodeBusStop nbs: listOfRemainingBusStops){
+//                System.out.println();
+//            }
+            listOfPaths = removePathFromList(listOfPaths, actualPath);
             listOfRemainingBusStops = removeNodeBusStopFromList(listOfRemainingBusStops, actualNode);
+
 //            System.out.println(listOfRemainingBusStops.size());
 
         }
@@ -119,27 +162,26 @@ public class DijkstraRequestShortest extends Request {
 
     }
 
-    private void displayPath(){
-
-    }
-
     private ArrayList<NodeBusStop> removeNodeBusStopFromList(ArrayList<NodeBusStop> nodeBusStops, NodeBusStop nodeBusStop){
         ArrayList<NodeBusStop> outputNodeBusStops = new ArrayList<>();
         boolean isSameBus;
-//        boolean isSameLine;
+        boolean isSameLine;
         boolean isSameBusStop;
         String nodeBusStopNameBus = nodeBusStop.getNameBus();
-//        String nodeBusStopNameLine = nodeBusStop.getNameLine();
+        String nodeBusStopNameLine = nodeBusStop.getNameLine();
+//        System.out.println("n: " + nodeBusStopNameLine);
         String nodeBusStopName = nodeBusStop.getNameBusStop();
         for (NodeBusStop nbs: nodeBusStops){
             isSameBus = nbs.getNameBus().equals(nodeBusStopNameBus);
-//            isSameLine = nbs.getNameLine().equals(nodeBusStopNameLine);
+            isSameLine = nbs.getNameLine().equals(nodeBusStopNameLine);
             isSameBusStop = nbs.getBusStop().getName().equals(nodeBusStopName);
-            if (!isSameBus || !isSameBusStop) {
-                outputNodeBusStops.add(nbs);
-            } else {
+//            System.out.println(isSameLine);
+            if (isSameBus && isSameLine && isSameBusStop) {
+//            if (isSameBus && isSameBusStop) {
 //                System.out.println(nbs.getNameBusStop());
 //                System.out.println(nbs.getNameBus());
+            } else {
+                outputNodeBusStops.add(nbs);
             }
         }
 //        for (NodeBusStop nbs: outputNodeBusStops){
@@ -148,6 +190,16 @@ public class DijkstraRequestShortest extends Request {
 //        System.out.println(" ");
 //        System.out.println("_______________");
         return outputNodeBusStops;
+    }
+
+    private ArrayList<Path> removePathFromList(ArrayList<Path> paths, Path path){
+        ArrayList<Path> outputPaths = new ArrayList<>();
+        for (Path p: paths){
+            if (p != path) {
+                outputPaths.add(p);
+            }
+        }
+        return outputPaths;
     }
 
     /*
@@ -162,7 +214,7 @@ public class DijkstraRequestShortest extends Request {
         int busNumbre = getNextBusAtThisHour(departureBusStopNode, hour);
 
         // for this bus if it's possible
-        for (NodeBusStop nbs: this.sibra.getNearestBusStop(departureBusStopNode.getNameBusStop(), null,this.typeDay)){
+        for (NodeBusStop nbs: this.sibra.getNearestBusStop(departureBusStopNode.getNameBusStop(), null, null,this.typeDay)){
             if (departureBusStopNode.getNameBus().equals(nbs.getNameBus()) &&
                 departureBusStopNode.getNameLine().equals(nbs.getNameLine())) {
                 // if same bus same line (= the next bus stop)
@@ -171,7 +223,7 @@ public class DijkstraRequestShortest extends Request {
         }
 
         // else for another bus
-        for (NodeBusStop nbs: this.sibra.getNearestBusStop(departureBusStopNode.getNameBusStop(), null,this.typeDay)){
+        for (NodeBusStop nbs: this.sibra.getNearestBusStop(departureBusStopNode.getNameBusStop(), null, null,this.typeDay)){
             // prendre en compte le temps pour aller à l'arrêt pour pouvoir ensuite savoir à partir de quand attendre un autre bus
             //    -> fonction dans Sibra pour savoir le temps entre deux arrêts (rajouter une minute de marge apres)
             //    -> continuer sette boucle for en regardant l procain bus qui passe
@@ -208,6 +260,7 @@ public class DijkstraRequestShortest extends Request {
 
     public void printDjikstraPath() {
         ArrayList<Path> djikstraPath = doDijkstra();
+        System.out.println(djikstraPath.size());
         ArrayList<Path> upsideDownPath = new ArrayList<>();
         ArrayList<Path> paths = new ArrayList<>();
         String hour = this.hour;
@@ -220,6 +273,7 @@ public class DijkstraRequestShortest extends Request {
         int counter = 0;
         int intMinutes;
         int t;
+        boolean isFirst = true;
 
         Path path = new Path(null, null, 1000);
         // first path
@@ -236,6 +290,7 @@ public class DijkstraRequestShortest extends Request {
         }
         upsideDownPath.add(path);
 
+        System.out.println(path.actualBusStop);
         while (!path.actualBusStop.getNameBusStop().equals(this.departure) && counter <= 1000){
             previousPath = path;
             for (Path p: djikstraPath){
@@ -261,6 +316,11 @@ public class DijkstraRequestShortest extends Request {
             System.out.println("______________");
             System.out.println("bus stop: " + p.actualBusStop.getNameBusStop());
             System.out.println("bus: " + p.actualBusStop.getNameBus());
+            System.out.println("direction: " + sibra.getDirection(p.getNameBus(), p.getNameLine()));
+            if (isFirst) {
+                isFirst = false;
+                System.out.println("estimated time of departure: " + p.actualBusStop.getHourAfter(this.hour));
+            }
 //            if (p.actualBusStop == null ||  p.previousBusStop == null) {
 //                t = 0;
 //            } else {
