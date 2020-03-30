@@ -81,6 +81,10 @@ public class Line {
     =======================================================================
     */
 
+    public String getLast(){
+        return this.listBusStopName.get(this.listBusStopName.size() - 1);
+    }
+
     public int indexBusStopName(String busStopName){
         // -1 if not in list else index
         if (!this.listBusStopName.contains(busStopName)) return -1;
