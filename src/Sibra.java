@@ -79,6 +79,15 @@ public class Sibra {
     =======================================================================
     */
 
+    public String getDirection(String busName, String lineName){
+        for (Bus b: this.listBus){
+            if (b.getName() == busName){
+                return b.getDirection(lineName);
+            }
+        }
+        return null;
+    }
+
     public void displayBusDepartureAndArrival(String departure, String arrival){
         System.out.println("Possibility of departure bus line:");
         for (Bus b: listBusStop(departure)) {
@@ -169,20 +178,28 @@ public class Sibra {
     =======================================================================
     */
 
-    public ArrayList<NodeBusStop> getNearestBusStop(String nameBusStop, String nameBus, String typeDay){
+    public ArrayList<NodeBusStop> getNearestBusStop(String nameBusStop, String nameLine, String nameBus, String typeDay){
         //list of buses only with the lines having the requested stop
         // (the list contains only the nearest bus stops)
         ArrayList<NodeBusStop> arrayNearestBusStop = new ArrayList<>();
         ArrayList<NodeBusStop> sameNodeBusStopOtherLine;
         for (Bus b: this.listBus){
-            arrayNearestBusStop.addAll(b.getArrayNearestBusStop(nameBusStop, typeDay));
+            arrayNearestBusStop.addAll(b.getArrayNearestBusStop(nameBusStop, nameLine, typeDay));
             // si c'est un autre bus, ajout du même arret si existe
-            if (b.getName() != nameBus){
+            if (!b.getName().equals(nameBus)){
                 sameNodeBusStopOtherLine = b.getNodeBusStop(nameBusStop, typeDay);
                 if (sameNodeBusStopOtherLine != null){
                     arrayNearestBusStop.addAll(sameNodeBusStopOtherLine);
                 }
             }
+            // si c'est le même bus, on prend l'arrêt dans l'autre sens
+            if (b.getName().equals(nameBus)){
+                sameNodeBusStopOtherLine = b.getNodeBusStop(nameBusStop, typeDay);
+                for (NodeBusStop nbs: sameNodeBusStopOtherLine) {
+                    if (nbs.getNameLine() != nameLine) arrayNearestBusStop.add(nbs);
+                }
+            }
+
         }
         arrayNearestBusStop.removeIf(Objects::isNull);
         return arrayNearestBusStop;
