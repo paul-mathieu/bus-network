@@ -187,9 +187,9 @@ public class Request {
         return this.sibra.getAllNodeBusStops(this.typeDay);
     }
 
-    public boolean isBusStopInList(String busStopName, ArrayList<NodeBusStop> nodeBusStops){
+    public boolean isBusStopInList(String busStopName, String lineName, String busName, ArrayList<NodeBusStop> nodeBusStops){
         for (NodeBusStop nbs: nodeBusStops){
-            if (nbs.getBusStop().getName().equals(busStopName)){
+            if (nbs.getNameBusStop().equals(busStopName) && nbs.getNameLine().equals(lineName) && nbs.getNameBus().equals(busName)){
                 return true;
             }
         }
